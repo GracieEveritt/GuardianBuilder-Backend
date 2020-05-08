@@ -20,7 +20,7 @@ router.post('/', (req, res) =>{
 //@route  PUT api/forms/:id
 //@desc   Update form
 //@access Private
-router.post('/:id', (req, res) =>{
+router.put('/:id', (req, res) =>{
     res.send('Update form');
 });
 
