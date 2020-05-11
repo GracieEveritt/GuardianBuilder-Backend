@@ -40,6 +40,17 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+/client/build
+.DS_Store
+/client/.env.Local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 
 # TypeScript v1 declaration files
 typings/
