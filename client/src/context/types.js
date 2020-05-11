@@ -1,0 +1,9 @@
+export const ADD_CHILD = 'ADD_CHILD';
+export const DELETE_CHILD = 'DELETE_CHILD';
+export const SET_CURRENT = 'SET_CURRENT';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const UPDATE_CHILD = 'UPDATE_CHILD';
+export const FILTER_CHILDREN = 'FILTER_CHILDREN';
+export const CLEAR_FILTER = 'CLEAR_FILTER';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
