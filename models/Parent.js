@@ -14,12 +14,16 @@ const ParentSchema = mongoose.Schema({
     middle_name: String,
     last_name: String,
     suffix: String,
-    birth_parent: {Boolean, default: true},
-    adoptee_parent: {Boolean, default: false},
+    birth_parent: {type: Boolean, default: true},
+    adoptee_parent: {type: Boolean, default: false},
     created: {
         type: Date,
         default: Date.now
-    }    
+    },
+    updated: {
+        type: Date,
+        default: Date.now
+    }     
 });
 
 module.exports = mongoose.model('parent', ParentSchema);

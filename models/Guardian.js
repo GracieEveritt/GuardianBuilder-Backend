@@ -5,6 +5,10 @@ const GuardianSchema = mongoose.Schema({
         ref: "Account",
         type: mongoose.Schema.Types.ObjectId
     },
+    children:[{
+        ref: "Child",
+        type: mongoose.Schema.Types.ObjectId
+    }],
     married: Boolean,
     spouse: {
         ref: "Guardian",
@@ -28,7 +32,11 @@ const GuardianSchema = mongoose.Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    updated: {
+        type: Date,
+        default: Date.now
+    } 
 });
 
 module.exports = mongoose.model('guardian', GuardianSchema);

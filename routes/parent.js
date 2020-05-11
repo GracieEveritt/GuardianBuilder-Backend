@@ -5,24 +5,25 @@ const { check, validationResult } = require('express-validator/check');
 
 const Account = require('../models/Account');
 const Child = require('../models/Child')
+const Parent = require('../models/Parent')
 
-//@route  GET api/child
-//@desc   Get all children by accountId
+//@route  GET api/parent
+//@desc   Get all parents by child_id 
 //@access Private
-router.get('/', auth, async (req, res) =>{
+router.get('/:id', auth, async (req, res) =>{
     try {
-        const children = await Child.find({parents: req.account.id});
-        res.json(children);
+        const parents = await Parent.find({children: req.params.id});
+        res.json(parents);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
 
-//@route  POST api/child
-//@desc   Add new form
+//@route  POST api/parent
+//@desc   Add new parent by childID
 //@access Private
-router.post('/', [auth,[
+router.post('/:id', [auth,[
     check('first_name', 'First name is required').not().isEmpty(),
     check('last_name', 'Last name is required').not().isEmpty()
     ]], async (req, res) => {
@@ -30,19 +31,35 @@ router.post('/', [auth,[
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()});
     }
-    const {first_name, last_name, dob} = req.body;
+    const {first_name, middle_name, last_name, suffix, birth_parent, adoptee_parent, deceased} = req.body;
+
 
     try {
-        const newChild = new Child({
-            first_name, last_name, dob, createdby: req.account.id, parents: req.account.id
+        const newParent = new Parent({
+            first_name, middle_name, last_name, suffix, birth_parent, adoptee_parent, deceased, createdby: req.account.id,
+            children: req.params.id
         })
-        const child = await newChild.save();
-        res.json(child)
+        const parent = await newParent.save();
+        const childFields = {}
+        childFields.parents = parent.id
+        let child = await Child.findById(req.params.id);
+        if(child.createdby.toString() !==req.account.id){
+            return res.status(401).json({msg: 'Not authorized.'});
+        }
+        child = await Child.findByIdAndUpdate(req.params.id,
+            { $push:childFields },
+            { new: true});
+            res.json(child);
+
+        res.json(parent)
     } catch(err){
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 });
+
+  
+
 
 //@route  PUT api/child/:id
 //@desc   Update form
