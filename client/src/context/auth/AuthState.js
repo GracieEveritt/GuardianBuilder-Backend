@@ -57,7 +57,10 @@ const AuthState = props => {
     //Logout -- destroy token
   
     //Clear errors
-  
+    const clearErrors = () => {
+        dispatch({ type: CLEAR_ERRORS})
+    }
+
     return (
         <AuthContext.Provider value={{
             token: state.token,
@@ -65,11 +68,11 @@ const AuthState = props => {
             loading: state.loading,
             account: state.account,
             error: state.error,
-            register
+            register,
             // loadAccount,
             // login,
             // logout,
-            // clearErrors
+            clearErrors
         }}>
             {props.children}
         </AuthContext.Provider>
