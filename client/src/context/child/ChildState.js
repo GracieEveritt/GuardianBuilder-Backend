@@ -1,5 +1,6 @@
 import React, { useReducer} from 'react';
-import {v4 as uuid} from "uuid";
+import axios from 'axios';
+// import {v4 as uuid} from "uuid";
 import ChildContext from './childContext'
 import childReducer from './childReducer'
 import {
@@ -9,53 +10,35 @@ import {
     CLEAR_CURRENT, 
     UPDATE_CHILD,
     FILTER_CHILDREN,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    CHILD_ERROR
 } from '../types';
 
 const ChildState = props => {
     const initialState = {
-        children: [
-            {
-                "parents": [
-                    "5eb82ada29b01a6c8366eb4c"
-                ],
-                "_id": "1",
-                "first_name": "Sherry",
-                "last_name": "Doe",
-                "dob": "2020-01-17T07:00:00.000Z",
-                "createdby": "5eb82ada29b01a6c8366eb4c"
-            },
-            {
-                "parents": [
-                    "5eb82ada29b01a6c8366eb4c"
-                ],
-                "_id": "2",
-                "first_name": "Jack",
-                "last_name": "Doe",
-                "dob": "2020-01-17T07:00:00.000Z",
-                "createdby": "5eb82ada29b01a6c8366eb4c"
-            },
-            {
-                "parents": [
-                    "5eb82ada29b01a6c8366eb4c"
-                ],
-                "_id": "3",
-                "first_name": "Baby",
-                "last_name": "Doe",
-                "dob": "2020-01-17T07:00:00.000Z",
-                "createdby": "5eb82ada29b01a6c8366eb4c"
-            }
-        ],
+        children: [ ],
         current: null,
-        filtered: null
+        filtered: null,
+        error: null
     };
 
     const [state, dispatch] = useReducer(childReducer, initialState);
 
     //Add child, 
-    const addChild = child => {
-        child._id = uuid;
-        dispatch({type: ADD_CHILD, payload: child})
+    const addChild = async child => {
+        // child._id = uuid;
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await axios.post('/api/child', child, config);
+            dispatch({type: ADD_CHILD, payload: res.data})
+        } catch (err) {
+            dispatch({type: CHILD_ERROR, payload: err.response.msg})
+        }
+        // dispatch({type: ADD_CHILD, payload: child})
     }
     //Delete child
     const deleteChild = _id => {
@@ -87,6 +70,7 @@ const ChildState = props => {
             children: state.children,
             current: state.current,
             filtered: state.filtered,
+            error: state.error,
             addChild,
             deleteChild,
             setCurrent,

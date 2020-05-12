@@ -5,7 +5,8 @@ import {
     CLEAR_CURRENT, 
     UPDATE_CHILD,
     FILTER_CHILDREN,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    CHILD_ERROR
 } from '../types';
 
 export default (state,action) => {
@@ -48,6 +49,11 @@ export default (state,action) => {
                 ...state,
                 filtered: null
             }
+        case CHILD_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
         default: 
             return state;
     }
