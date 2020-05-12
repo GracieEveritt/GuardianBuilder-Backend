@@ -10,9 +10,9 @@ import {
 } from '../types';
 
 export default (state, action) => {
-    switch(action.type){
+    switch(action.type) {
         case REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.token)
+            localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
                 ...action.payload,
@@ -20,7 +20,7 @@ export default (state, action) => {
                 loading: false
             };
         case REGISTER_FAIL:
-            localStorage.removeItem('token')
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,

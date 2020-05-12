@@ -3,6 +3,7 @@ const parser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const path = require('path')
+const morgan = require('morgan')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,6 +13,7 @@ connectDB();
 app.use(express.json({extended:false}));
 app.use(parser.json());
 app.use(cors());
+app.use(morgan('dev'))
 
 //remove this when deploy
 app.get('/', (req, res) => res.json({msg:'Welcome to the GuardianBuilder API'}));
