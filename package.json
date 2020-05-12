@@ -32,7 +32,8 @@
     "express-validator": "^6.4.1",
     "heroku": "^7.40.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.13"
+    "mongoose": "^5.9.13",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
