@@ -62,10 +62,24 @@ const ChildState = props => {
             dispatch({type: DELETE_CHILD, payload: _id})
         } catch (err) {
             dispatch({type: CHILD_ERROR, payload: err.response.msg})
-        }
-        
-        
+        } 
     }
+
+    //Update Child
+    const updateChild = async child => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await axios.put(`/api/child/${child._id}`, child, config);
+            dispatch({type: UPDATE_CHILD, payload: res.data})
+        } catch (err) {
+            dispatch({type: CHILD_ERROR, payload: err.response.msg})
+        }
+    }
+
     //Clear children
     const clearChildren = () => {
         dispatch({type: CLEAR_CHILDREN})
@@ -78,10 +92,7 @@ const ChildState = props => {
     const clearCurrent = () => {
         dispatch({type: CLEAR_CURRENT})
     }
-    //Update Child
-    const updateChild = child => {
-        dispatch({type: UPDATE_CHILD, payload: child})
-    }
+
     //Filter Children
     const filterChildren = text => {
         dispatch({type:FILTER_CHILDREN, payload: text});
