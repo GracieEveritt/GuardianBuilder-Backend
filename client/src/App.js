@@ -4,23 +4,29 @@ import './App.css';
 import Navbar from './components/layout/Navbar'
 import Home from './components/pages/Home'
 import About from './components/pages/About'
-import ContactState from './context/child/ChildState'
+import ChildState from './context/child/ChildState'
+import AlertState from './context/alert/AlertState'
+import Alerts from './components/layout/Alerts'
 
 function App() {
   return (
-    <ContactState>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/about' component={About} />
-            </Switch>
-          </div>
-        </Fragment>
-      </Router>
-    </ContactState>
+    
+      <ChildState>
+        <AlertState>
+        <Router>
+          <Fragment>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/about' component={About} />
+              </Switch>
+            </div>
+          </Fragment>
+        </Router>
+        </AlertState>
+      </ChildState>
+   
   );
 }
 
