@@ -65,7 +65,32 @@ const AuthState = props => {
         }
     }
     //Login User -- log in user and get token
-  
+    const login = async formData => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+       
+        try {
+            
+            const api = axios.create({
+                baseURL: "http://localhost:5000"
+            });
+            console.log('formData', formData)
+            const res = await api.post('/api/auth', formData, config);
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data
+            });
+            loadAccount();
+        } catch (err) {
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: err.response.data.msg
+            });
+        }
+    }
     //Logout -- destroy token
   
     //Clear errors
@@ -82,7 +107,7 @@ const AuthState = props => {
             error: state.error,
             register,
             loadAccount,
-            // login,
+            login,
             // logout,
             clearErrors
         }}>
