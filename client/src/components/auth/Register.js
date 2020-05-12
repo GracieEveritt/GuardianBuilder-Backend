@@ -7,9 +7,9 @@ const Register = () => {
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
 
-    const {setAlert} = alertContext;
+    const { setAlert } = alertContext;
 
-    const {register} = authContext;
+    const { register } = authContext;
 
     const [account, setAccount] = useState({
         first_name: '',
@@ -28,12 +28,12 @@ const Register = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        if(first_name === '' || phone === '' || email === '' || password === '' || last_name === ''){
-            setAlert('Please enter all fields', 'danger')
+        if(first_name === '' || phone === '' || email === '' || password === '' || last_name === '') {
+            setAlert('Please enter all fields', 'danger');
         } else if(password !== password2) {
-            setAlert('Passwords do not match', 'danger')
+            setAlert('Passwords do not match', 'danger');
         } else {
-            register()
+            register();
             // register({
             //     first_name,
             //     middle_name,
