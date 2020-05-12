@@ -22,7 +22,7 @@ export default (state,action) => {
         case ADD_CHILD:
             return {
                 ...state,
-                children: [...state.children, action.payload],
+                children: [action.payload, ...state.children],
                 loading: false
             }
         case UPDATE_CHILD:

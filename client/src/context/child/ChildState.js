@@ -56,8 +56,15 @@ const ChildState = props => {
         // dispatch({type: ADD_CHILD, payload: child})
     }
     //Delete child
-    const deleteChild = _id => {
-        dispatch({type: DELETE_CHILD, payload: _id})
+    const deleteChild = async _id => {
+        try {
+            await axios.delete(`/api/child/${_id}`);
+            dispatch({type: DELETE_CHILD, payload: _id})
+        } catch (err) {
+            dispatch({type: CHILD_ERROR, payload: err.response.msg})
+        }
+        
+        
     }
     //Clear children
     const clearChildren = () => {
