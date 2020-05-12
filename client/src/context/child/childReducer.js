@@ -1,5 +1,7 @@
 import {
     ADD_CHILD,
+    GET_CHILDREN,
+    CLEAR_CHILDREN,
     DELETE_CHILD,
     SET_CURRENT,
     CLEAR_CURRENT, 
@@ -11,20 +13,37 @@ import {
 
 export default (state,action) => {
     switch(action.type) {
+        case GET_CHILDREN:
+            return {
+                ...state, 
+                children: action.payload,
+                loading: false
+            }
         case ADD_CHILD:
             return {
                 ...state,
-                children: [...state.children, action.payload]
+                children: [...state.children, action.payload],
+                loading: false
             }
         case UPDATE_CHILD:
             return {
                 ...state,
-                children: state.children.map(child => child._id === action.payload._id ? action.payload : child)
+                children: state.children.map(child => child._id === action.payload._id ? action.payload : child),
+                loading: false
             }
         case DELETE_CHILD:
             return {
                 ...state,
-                children: state.children.filter(child => child._id !== action.payload)
+                children: state.children.filter(child => child._id !== action.payload),
+                loading: false
+            }
+        case CLEAR_CHILDREN:
+            return {
+                ...state,
+                children: null,
+                filtered: null,
+                error: null,
+                current: null
             }
         case SET_CURRENT:
             return {

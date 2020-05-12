@@ -11,18 +11,33 @@ import {
     UPDATE_CHILD,
     FILTER_CHILDREN,
     CLEAR_FILTER,
-    CHILD_ERROR
+    CHILD_ERROR,
+    GET_CHILDREN,
+    CLEAR_CHILDREN
 } from '../types';
 
 const ChildState = props => {
     const initialState = {
-        children: [ ],
+        children: null,
         current: null,
         filtered: null,
         error: null
     };
 
     const [state, dispatch] = useReducer(childReducer, initialState);
+    
+    //Get children
+    const getChildren = async () => {
+        // child._id = uuid;
+        try {
+            const res = await axios.get('/api/child');
+            dispatch({type: GET_CHILDREN, payload: res.data})
+        } catch (err) {
+            dispatch({type: CHILD_ERROR, payload: err.response.msg})
+        }
+        // dispatch({type: ADD_CHILD, payload: child})
+    }
+
 
     //Add child, 
     const addChild = async child => {
@@ -43,6 +58,10 @@ const ChildState = props => {
     //Delete child
     const deleteChild = _id => {
         dispatch({type: DELETE_CHILD, payload: _id})
+    }
+    //Clear children
+    const clearChildren = () => {
+        dispatch({type: CLEAR_CHILDREN})
     }
     //Set Current child
     const setCurrent = child => {
@@ -77,7 +96,10 @@ const ChildState = props => {
             clearCurrent,
             updateChild,
             filterChildren,
-            clearFilter
+            clearFilter,
+            getChildren,
+            clearChildren
+            
         }}>
             {props.children}
         </ChildContext.Provider>
