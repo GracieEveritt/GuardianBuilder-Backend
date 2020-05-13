@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import Children from '../children/Children'
-import ChildForm from '../children/ChildForm'
-import ChildrenFilter from '../children/ChildFilter'
+
 import AuthContext from '../../context/auth/authContext';
 import AuthState from '../../context/auth/AuthState';
 
@@ -14,15 +12,7 @@ const Home = () => {
     }, [])
 
     return(
-        <div className="grid-2">
-            <div>
-                <ChildForm />
-            </div>
-            <div>
-                <ChildrenFilter />
-                <Children />
-            </div>
-        </div>
+        <h1>Dashboard</h1>
     )
 }
 

@@ -23,14 +23,25 @@ const ChildForm = () => {
         first_name:'',
         last_name: '',
         dob: '',
-        type: 'birth'
+        adopted: '',
+        birth: ''
     });
 
-    const { first_name, last_name, dob, type} = child;
+    const { first_name, last_name, dob, type, birth, adopted} = child;
     
-    const onChange = e => setChild({ ...child, [e.target.name]: e.target.value })
+    const onChange = e => {
+        console.log('e', e.target)
+        if(e.target.name ==='type' && e.target.value === 'adopted') {
+            console.log('test', )
+            setChild({...child, adopted: true, birth: false, [e.target.name]: e.target.value})
+        } else {
+        setChild({ ...child, [e.target.name]: e.target.value })
+        }
+
+    }
 
     const onSubmit = e => {
+        console.log('onSubmit - child', child)
         e.preventDefault();
         if(current === null){
             addChild(child);
@@ -42,7 +53,8 @@ const ChildForm = () => {
             first_name:'',
             last_name: '',
             dob: '',
-            type: 'birth'
+            adopted: '',
+            birth: ''            
         })
     };
 
@@ -54,12 +66,13 @@ const ChildForm = () => {
             <h2 className='text-primary'>{current ? 'Edit Child' : 'Add Child'}</h2>
             <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
             <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
+            <h5>Date of Birth</h5>
             <input type='date' placeholder='Date of Birth' name='dob' value={dob} onChange={onChange} />
-            <h5>Child Type</h5>
+            
             <input type='radio' name='type' value='birth' checked={type === 'birth'} onChange={onChange}/>
-            Personal{' '}
-            <input type='radio' name='type' value='adopted' checked={type === 'adopted'} onChange={onChange}/>
-            Professional{' '}
+            Birth{' '}
+            <input type='radio' name='type' value='adopted' checked={type ==='adopted'} onChange={onChange}/>
+            Adopted{' '}
             <div>
                 <input type="submit" value={current? 'Edit Child': "Add Child"} className='btn btn-primary btn-block'/>
             </div>

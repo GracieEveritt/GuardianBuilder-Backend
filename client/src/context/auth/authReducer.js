@@ -6,11 +6,15 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    UPDATE_ACCOUNT,
+    ACCOUNT_ERROR
 } from '../types';
 
 export default (state, action) => {
+
     switch(action.type) {
+        
         case USER_LOADED:
             return {
                 ...state,
@@ -27,6 +31,14 @@ export default (state, action) => {
                 isAuthenticated: true,
                 loading: false
             };
+        case UPDATE_ACCOUNT:
+            console.log('reducer', state, action, action.type)
+            return {
+                ...state,
+                
+                // accounts: state.accounts.map(account => account._id === action.payload._id ? action.payload : account),
+                loading: false
+            }
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
@@ -44,6 +56,11 @@ export default (state, action) => {
             return {
                 ...state,
                 error: null
+            };
+        case ACCOUNT_ERROR:
+            return {
+                ...state,
+                error: action.payload
             };
         default:
             return state;

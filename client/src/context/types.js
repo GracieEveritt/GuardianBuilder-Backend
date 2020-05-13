@@ -18,3 +18,5 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const CHILD_ERROR = 'CHILD_ERROR';
+export const UPDATE_ACCOUNT ='UPDATE_ACCOUNT';
+export const ACCOUNT_ERROR = 'ACCOUNT_ERROR';

@@ -6,21 +6,21 @@ const ChildItem = ({child}) => {
     const childContext = useContext(ChildContext);
     
     const {deleteChild, setCurrent, clearCurrent} = childContext;
-    const {parents, _id, first_name, last_name, dob, createdBy} = child;
+    const {parents, _id, first_name, last_name, dob, type, adopted, birth} = child;
     
     const onDelete = () => {
         deleteChild(_id);
         clearCurrent();
     }
-
+    console.log('childItem', child)
     return(
         <div className='card bg-light'>
             <h3 className='text-primary text-left'>
-                {first_name}{' '} 
+                {first_name} {last_name}{' '} 
                 <span style={{float: 'right'}}
-                className={'badge ' + (last_name === 'Doe' ? 'badge-success' : 'badge-primary')
+                className={'badge ' + (adopted === 'true' ? 'badge-success' : 'badge-primary')
             }>
-                {last_name.charAt(0).toUpperCase() + last_name.slice(1)}
+                {adopted ? 'Adopted' : 'Birth'}
                 </span>
             </h3> 
             <ul className='list'>

@@ -11,7 +11,9 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    UPDATE_ACCOUNT,
+    ACCOUNT_ERROR
 } from '../types';
 
 const AuthState = props => {
@@ -98,6 +100,25 @@ const AuthState = props => {
         dispatch({ type: CLEAR_ERRORS})
     }
 
+    //update Account
+    const updateAccount = async (id, account) => {
+        console.log('updateAccount', id, account)
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await axios.put(`/api/accounts/${id}`, account, config);
+            console.log('AuthState-res', res)
+            dispatch({type: UPDATE_ACCOUNT, payload: res.data})
+        } 
+        catch (err) {
+            console.log('catch', err)
+            // dispatch({type: ACCOUNT_ERROR, payload: err.response.msg})
+        }
+    }
+
     return (
         <AuthContext.Provider value={{
             token: state.token,
@@ -109,7 +130,8 @@ const AuthState = props => {
             loadAccount,
             login,
             logout,
-            clearErrors
+            clearErrors,
+            updateAccount
         }}>
             {props.children}
         </AuthContext.Provider>

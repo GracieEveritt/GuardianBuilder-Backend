@@ -12,6 +12,15 @@ import AlertState from './context/alert/AlertState';
 import Alerts from './components/layout/Alerts';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute';
+import Sidebar from './components/layout/Sidebar';
+import Footer from './components/layout/Footer';
+import Support from './components/pages/Support';
+import Library from './components/pages/Library';
+import Account from './components/pages/Account';
+import Forms from './components/pages/Forms';
+import Schedule from './components/pages/Schedule';
+import Settings from './components/pages/Settings';
+import Estate from './components/pages/Estate';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -25,15 +34,27 @@ function App() {
           <Router>
             <Fragment>
               <Navbar />
+              <Sidebar />
               <div className="container">
                 <Alerts />
                 <Switch>
                   <PrivateRoute exact path='/' component={Home} />
+                  <PrivateRoute exact path='/account' component={Account} />
+                  <PrivateRoute exact path='/forms' component={Forms} />
+                  <PrivateRoute exact path='/estate' component={Estate} />
+                  <PrivateRoute exact path='/schedule' component={Schedule} />
+                  <PrivateRoute restricted={true} exact path='/charge' component={Settings} />
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
+                  <Route exact path='/support' component={Support} />
+                  <Route exact path='/library' component={Library} />
+                  
                 </Switch>
+
+
               </div>
+              <Footer />
             </Fragment>
           </Router>
         </AlertState>

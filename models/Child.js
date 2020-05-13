@@ -18,7 +18,9 @@ const ChildSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },    
-    updated: {type: Date, default: Date.now}
+    updated: {type: Date, default: Date.now},
+    adopted: {type: Boolean, default: false},
+    birth: {type: Boolean, default: true}
 });
 
 module.exports = mongoose.model('child', ChildSchema);

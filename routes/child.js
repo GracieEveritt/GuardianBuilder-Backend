@@ -30,11 +30,11 @@ router.post('/', [auth,[
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()});
     }
-    const {first_name, last_name, dob} = req.body;
+    const {first_name, last_name, dob, adopted, birth} = req.body;
 
     try {
         const newChild = new Child({
-            first_name, last_name, dob, createdby: req.account.id, parents: req.account.id
+            first_name, last_name, dob, adopted, birth, createdby: req.account.id, parents: req.account.id
         })
         const child = await newChild.save();
         res.json(child)
@@ -48,12 +48,14 @@ router.post('/', [auth,[
 //@desc   Update form
 //@access Private
 router.put('/:id', auth, async (req, res) =>{
-    const {first_name, last_name, dob} = req.body;
+    const {first_name, last_name, dob, adopted, birth} = req.body;
     //Build object based on fields submitted
     const childFields = {};
     if(first_name) childFields.first_name = first_name;
     if(last_name) childFields.last_name = last_name;
     if(dob) childFields.dob = dob;
+    if(adopted) childFields.adopted = adopted;
+    if(birth) childFields.birth = birth;
 
     try {
         let child = await Child.findById(req.params.id);
@@ -66,6 +68,7 @@ router.put('/:id', auth, async (req, res) =>{
             { $set:childFields },
             { new: true});
             res.json(child);
+            console.log('after api chid', child)
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
