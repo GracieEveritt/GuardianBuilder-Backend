@@ -12,7 +12,7 @@ const ChildItem = ({child}) => {
         deleteChild(_id);
         clearCurrent();
     }
-    console.log('childItem', child)
+
     return(
         <div className='card bg-light'>
             <h3 className='text-primary text-left'>
