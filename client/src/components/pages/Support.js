@@ -2,12 +2,18 @@ import React from 'react'
 
 const Support = () => {
     return(
+        <>
         <div>
-            <h1>Support Page</h1>
-            <p className="my-1">
-                This is a the support section.
-            </p>
+            <h3>Support Page</h3>
         </div>
+        <div>
+            <h4>XYZ Lawfirm</h4>
+            <p>100 Main Street, Suite 100</p>
+            <p>Telluride, CO 81435</p>
+            <p>866-555-1234</p>
+            <p>info@xyzlawfirm.com</p>
+        </div>
+       </>
     )
 }
 

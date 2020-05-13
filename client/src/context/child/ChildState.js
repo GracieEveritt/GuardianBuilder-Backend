@@ -23,7 +23,7 @@ const ChildState = props => {
         filtered: null,
         error: null
     };
-
+    console.log('ChildState-initialState', initialState)
     const [state, dispatch] = useReducer(childReducer, initialState);
     
     //Get children
@@ -49,6 +49,7 @@ const ChildState = props => {
         }
         try {
             const res = await axios.post('/api/child', child, config);
+            console.log('add-child', res.data)
             dispatch({type: ADD_CHILD, payload: res.data})
         } catch (err) {
             dispatch({type: CHILD_ERROR, payload: err.response.msg})

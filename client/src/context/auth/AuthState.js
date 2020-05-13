@@ -38,6 +38,7 @@ const AuthState = props => {
         } catch (err) {
             dispatch({type: AUTH_ERROR})
         }
+        
     }
     //Register Account
     const register = async formData => {
@@ -52,7 +53,7 @@ const AuthState = props => {
             const api = axios.create({
                 baseURL: "http://localhost:5000"
             });
-            console.log('formData', formData)
+            
             const res = await api.post('/api/accounts', formData, config);
             dispatch({
                 type: REGISTER_SUCCESS,
@@ -65,6 +66,7 @@ const AuthState = props => {
                 payload: err.response.data.msg
             });
         }
+        
     }
     //Login User -- log in user and get token
     const login = async formData => {
@@ -118,7 +120,7 @@ const AuthState = props => {
             // dispatch({type: ACCOUNT_ERROR, payload: err.response.msg})
         }
     }
-
+    
     return (
         <AuthContext.Provider value={{
             token: state.token,

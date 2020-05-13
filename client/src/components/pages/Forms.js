@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Forms = () => {
+const Forms = (props) => {
     return(
         <>
         <div>

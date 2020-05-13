@@ -3,7 +3,7 @@ import AuthContext from '../../context/auth/authContext';
 import AlertContext from '../../context/alert/alertContext';
 
 const Login = (props) => {
-
+    console.log('login-props', props.history)
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
 

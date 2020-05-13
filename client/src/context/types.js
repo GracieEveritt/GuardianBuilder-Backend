@@ -20,3 +20,5 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const CHILD_ERROR = 'CHILD_ERROR';
 export const UPDATE_ACCOUNT ='UPDATE_ACCOUNT';
 export const ACCOUNT_ERROR = 'ACCOUNT_ERROR';
+export const ADD_FORM = 'ADD_FORM';
+export const FORM_ERROR = 'FORM_ERROR';

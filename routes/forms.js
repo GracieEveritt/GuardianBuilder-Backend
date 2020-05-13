@@ -25,17 +25,17 @@ router.get('/', auth, async (req, res) =>{
 //@desc   Add new form
 //@access Private
 router.post('/', [auth,[
-    check('name', 'Name is required').not().isEmpty()
+    // check('name', 'Name is required').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
-    const {name, email, phone, type} = req.body;
-
+    const {children} = req.body;
+    console.log('BE-req.body', req.body, children)
     try {
         const newForm = new Guardianship({
-            name, email, phone, type, account: req.account.id
+            children:req.body, createdby: req.account.id
         })
         const form = await newForm.save();
         res.json(form)

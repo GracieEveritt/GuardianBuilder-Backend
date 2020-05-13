@@ -6,10 +6,12 @@ const GuardianshipSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId
     },
     draft: {
-        type: Boolean
+        type: Boolean, 
+        default: true
     }, 
     final: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     parents: [{
         ref: "Parent",
@@ -30,7 +32,8 @@ const GuardianshipSchema = mongoose.Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    updated: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('guardianship', GuardianshipSchema);

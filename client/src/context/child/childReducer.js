@@ -20,6 +20,7 @@ export default (state,action) => {
                 loading: false
             }
         case ADD_CHILD:
+
             return {
                 ...state,
                 children: [action.payload, ...state.children],

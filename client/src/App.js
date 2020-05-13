@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import GuardianState from './context/guardian/guardianState';
 import ChildState from './context/child/ChildState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
@@ -21,7 +22,8 @@ import Forms from './components/pages/Forms';
 import Schedule from './components/pages/Schedule';
 import Settings from './components/pages/Settings';
 import Estate from './components/pages/Estate';
-import Guardianship from './components/forms/Guardianship'
+import Guardianship from './components/forms/Guardianship';
+import ParentForm from './components/parents/ParentForm';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -30,6 +32,7 @@ if(localStorage.token) {
 function App() {
   return (
     <AuthState>
+      <GuardianState>
       <ChildState>
         <AlertState>
           <Router>
@@ -44,7 +47,8 @@ function App() {
                   <PrivateRoute exact path='/forms' component={Forms} />
                   <PrivateRoute exact path='/estate' component={Estate} />
                   <PrivateRoute exact path='/schedule' component={Schedule} />
-                  <PrivateRoute exact path='/guardianship' component={Guardianship} />
+                  <PrivateRoute exact path='/parent' component={ParentForm} />
+                  <PrivateRoute exact path='/guardianship' component={Guardianship}/>
                   <PrivateRoute restricted={true} exact path='/charge' component={Settings} />
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />
@@ -61,6 +65,7 @@ function App() {
           </Router>
         </AlertState>
       </ChildState>
+      </GuardianState>
     </AuthState>
   );
 }

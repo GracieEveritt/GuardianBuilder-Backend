@@ -45,9 +45,6 @@ const Navbar = ({ title, icon}) => {
             </h1>
             <ul>
                 {isAuthenticated ? authLinks : guestLinks}
-                <li>
-                    <Link to='/about'>About</Link>
-                </li>
 
             </ul>
         </div>
@@ -61,7 +58,7 @@ Navbar.propTypes ={
 
 Navbar.defaultProps = {
     title: 'Guardian Builder',
-    icon: 'fas fa-id-card-alt'
+    icon: 'fas fa-file-contract'
 };
 
 export default Navbar;

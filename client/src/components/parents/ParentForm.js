@@ -1,10 +1,8 @@
 import React, {useState, useContext, useEffect} from 'react'
-import { Redirect } from 'react-router-dom'
 import ChildContext from '../../context/child/childContext'
 import GuardianContext from '../../context/guardian/guardianContext'
 
-const ChildForm = (props) => {
-    console.log('props-history',props.history)
+const ParentForm = (props) => {
     const childContext = useContext(ChildContext)
     const guardianContext = useContext(GuardianContext)
     
@@ -74,7 +72,6 @@ const ChildForm = (props) => {
         })
         console.log('insidecreateGuardian - children', childrenIDs)
         guardianContext.createGuardianForm(childrenIDs)
-        props.history.push('/parent')
 
     }
     return(
@@ -83,7 +80,7 @@ const ChildForm = (props) => {
             <button className='btn btn-light btn-block' onClick={createGuardian}>Continue</button>
         </div>
         <form onSubmit={onSubmit}>
-            <h2 className='text-primary'>{current ? 'Edit Child' : 'Add Child'}</h2>
+            <h2 className='text-primary'>Parent Form</h2>
             <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
             <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
             <h5>Date of Birth</h5>
@@ -104,4 +101,4 @@ const ChildForm = (props) => {
     )
 }
 
-export default ChildForm
+export default ParentForm
