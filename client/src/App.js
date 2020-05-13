@@ -21,6 +21,7 @@ import Forms from './components/pages/Forms';
 import Schedule from './components/pages/Schedule';
 import Settings from './components/pages/Settings';
 import Estate from './components/pages/Estate';
+import Guardianship from './components/forms/Guardianship'
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -43,6 +44,7 @@ function App() {
                   <PrivateRoute exact path='/forms' component={Forms} />
                   <PrivateRoute exact path='/estate' component={Estate} />
                   <PrivateRoute exact path='/schedule' component={Schedule} />
+                  <PrivateRoute exact path='/guardianship' component={Guardianship} />
                   <PrivateRoute restricted={true} exact path='/charge' component={Settings} />
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />
