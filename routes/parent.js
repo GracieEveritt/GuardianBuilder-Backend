@@ -10,9 +10,9 @@ const Parent = require('../models/Parent')
 //@route  GET api/parent
 //@desc   Get all parents by child_id 
 //@access Private
-router.get('/:id', auth, async (req, res) =>{
+router.get('/', auth, async (req, res) =>{
     try {
-        const parents = await Parent.find({children: req.params.id});
+        const parents = await Parent.find({createdby: req.account.id});
         res.json(parents);
     } catch (err) {
         console.error(err.message);
@@ -23,7 +23,7 @@ router.get('/:id', auth, async (req, res) =>{
 //@route  POST api/parent
 //@desc   Add new parent by childID
 //@access Private
-router.post('/:id', [auth,[
+router.post('/', [auth,[
     check('first_name', 'First name is required').not().isEmpty(),
     check('last_name', 'Last name is required').not().isEmpty()
     ]], async (req, res) => {
@@ -31,25 +31,27 @@ router.post('/:id', [auth,[
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()});
     }
-    const {first_name, middle_name, last_name, suffix, birth_parent, adoptee_parent, deceased} = req.body;
+    console.log('api req.boyd', req.body)
+    const {first_name, children, middle_name, last_name, suffix, birth_parent, adoptee_parent, deceased, spouse} = req.body;
 
 
     try {
         const newParent = new Parent({
-            first_name, middle_name, last_name, suffix, birth_parent, adoptee_parent, deceased, createdby: req.account.id,
-            children: req.params.id
+            first_name, middle_name, last_name, suffix, birth_parent, adoptee_parent, deceased, spouse, createdby: req.account.id,
+            children
         })
         const parent = await newParent.save();
-        const childFields = {}
-        childFields.parents = parent.id
-        let child = await Child.findById(req.params.id);
-        if(child.createdby.toString() !==req.account.id){
-            return res.status(401).json({msg: 'Not authorized.'});
-        }
-        child = await Child.findByIdAndUpdate(req.params.id,
-            { $push:childFields },
-            { new: true});
-            res.json(child);
+        
+        // const childFields = {}
+        // childFields.parents = parent.id
+        // let child = await Child.findById(req.params.id);
+        // if(child.createdby.toString() !==req.account.id){
+        //     return res.status(401).json({msg: 'Not authorized.'});
+        // }
+        // child = await Child.findByIdAndUpdate(req.params.id,
+        //     { $push:childFields },
+        //     { new: true});
+        //     res.json(child);
 
         res.json(parent)
     } catch(err){

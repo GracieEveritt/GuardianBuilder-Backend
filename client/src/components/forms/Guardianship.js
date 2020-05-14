@@ -2,14 +2,18 @@ import React, {useContext} from 'react';
 import ChildForm from '../children/ChildForm'
 import Children from '../children/Children'
 import GuardianContext from '../../context/guardian/guardianContext'
+import AuthContext from '../../context/auth/authContext'
 
 
 const Guardianship = (props) => {
-    console.log('guardianship-props', props.history)
+    const authContext = useContext(AuthContext)
     const guardianContext = useContext(GuardianContext)
-    const {children, parents, guardians, account, form, limitations} = guardianContext;
+    const {children, parents, guardians,  form, limitations} = guardianContext;
+    const { account } = authContext;
 
-    console.log('Guardianship-context', account)
+    console.log('Guardianship-account', account)
+
+    
     return(
         <div className='form-container'>
             <div className='form-header'>Guardianship Form</div>

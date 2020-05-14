@@ -14,6 +14,7 @@ const ParentSchema = mongoose.Schema({
     middle_name: String,
     last_name: String,
     suffix: String,
+    spouse: {type:Boolean, default: true},
     birth_parent: {type: Boolean, default: true},
     adoptee_parent: {type: Boolean, default: false},
     created: {

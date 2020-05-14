@@ -32,7 +32,7 @@ router.post('/', [auth,[
         return res.status(400).json({errors: errors.array()});
     }
     const {children} = req.body;
-    console.log('BE-req.body', req.body, children)
+    console.log('children-req',req.body)
     try {
         const newForm = new Guardianship({
             children:req.body, createdby: req.account.id
@@ -48,8 +48,58 @@ router.post('/', [auth,[
 //@route  PUT api/forms/:id
 //@desc   Update form
 //@access Private
-router.put('/:id', (req, res) =>{
-    res.send('Update form');
+router.put('/:id/parents', auth, async (req, res) =>{
+    const {parents, limitations, guardians, draft, final} = req.body;
+    //Build object based on fields submitted
+    console.log('api-req.body', req.body)
+    // const formFields = {};
+    // formFields.parents = parents;
+    // if(limitations) formFields.limitations = limitations;
+    // if(guardians) formFields.guardians = guardians;
+    // if(draft) formFields.draft = draft;
+    // if(birth) formFields.final = final;
+    console.log('api-id', req.params.id)
+    console.log('api-field', req.params.field)
+    try {
+        let form = await Guardianship.findById(req.params.id);
+        if(!form) return res.status(404).json({msg: 'Form not found.'})
+        //make sure account owns child -- not sure req.account.id is corret...
+        if(form.createdby.toString() !==req.account.id){
+            return res.status(401).json({msg: 'Not authorized.'});
+        }
+        const filter = { _id: req.params.id}
+        const update = { "parents" : req.body }
+        form = await Guardianship.findByIdAndUpdate(filter,update, {new:true});
+        const uform = await form.save();
+            res.json(uform);
+            console.log('after api form update', form)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+router.put('/:id/parents/limitations', auth, async (req, res) =>{
+    console.log('id', req.params.id)
+    console.log('req-body', req.body)
+    try {
+        let form = await Guardianship.findById(req.params.id);
+        if(!form) return res.status(404).json({msg: 'Form not found.'})
+        //make sure account owns child -- not sure req.account.id is corret...
+        if(form.createdby.toString() !==req.account.id){
+            return res.status(401).json({msg: 'Not authorized.'});
+        }
+        const filter = { _id: req.params.id}
+        const update =  req.body 
+        console.log('api update', update)
+        form = await Guardianship.findByIdAndUpdate(filter,update, {new:true});
+        const uform = await form.save();
+            res.json(uform);
+            console.log('after api form update', form)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 });
 
 //@route  DELETE api/forms/:id

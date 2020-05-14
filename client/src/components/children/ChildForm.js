@@ -2,15 +2,16 @@ import React, {useState, useContext, useEffect} from 'react'
 import { Redirect } from 'react-router-dom'
 import ChildContext from '../../context/child/childContext'
 import GuardianContext from '../../context/guardian/guardianContext'
+import AuthContext from '../../context/auth/authContext'
 
 const ChildForm = (props) => {
-    console.log('props-history',props.history)
+    const authContext = useContext(AuthContext)
     const childContext = useContext(ChildContext)
     const guardianContext = useContext(GuardianContext)
-    
+    const { account } = authContext;
     const {addChild, current, clearCurrent, updateChild, children } = childContext;
     // const {createGuardianForm} = guardianContext;
-
+    console.log('ChildForm-account', account)
     useEffect(() => {
         if(current !==null){
             setChild(current);
@@ -68,12 +69,12 @@ const ChildForm = (props) => {
     }
 
     const createGuardian = () => {
-        
+        console.log('CreateGuardian-account',account)
         const childrenIDs=children.map(child => {
             return child._id
         })
-        console.log('insidecreateGuardian - children', childrenIDs)
-        guardianContext.createGuardianForm(childrenIDs)
+       
+        guardianContext.createGuardianForm(childrenIDs,account)
         props.history.push('/parent')
 
     }

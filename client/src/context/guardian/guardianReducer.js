@@ -1,6 +1,11 @@
 import {
     ADD_FORM,
-    FORM_ERROR
+    FORM_ERROR,
+    ADD_PARENT,
+    PARENT_ERROR,
+    GET_PARENT,
+    ADD_ACCOUNT,
+    UPDATE_FORM
 
 } from '../types';
 
@@ -10,18 +15,43 @@ export default (state,action) => {
         case ADD_FORM:
             return {
                 ...state,
-                children: [action.payload.children],
+                children: action.payload.children,
                 form: action.payload._id,
-                account: action.payload.createdby,
-                parents: [action.payload.createdby],
                 loading: false
             };
+        case ADD_ACCOUNT:
+            return {
+                ...state,
+                parents:  [...state.parents,action.payload],
+            }
+        case UPDATE_FORM:
+            return {
+                ...state,
+                form: action.payload,
+                loading: false
+            }
         case FORM_ERROR:
             return {
                 ...state,
                 error: action.payload
             };
-        
+        case ADD_PARENT:
+            return {
+                ...state,
+                parents: [action.payload, ...state.parents],
+                loading: false
+            }
+        case PARENT_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case GET_PARENT:
+            return {
+                ...state, 
+                parents: action.payload,
+                loading: false
+            }
         default: 
             return state;
     }

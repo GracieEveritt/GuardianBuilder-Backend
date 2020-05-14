@@ -8,7 +8,7 @@ import Spinner from '../layout/Spinner'
 const Children = () => {
     const childContext = useContext(ChildContext);
     const {children, filtered, getChildren, loading} = childContext;
-
+    console.log('Children-children', children)
     useEffect(()=>{
         getChildren();
         //eslint-disable-next-line

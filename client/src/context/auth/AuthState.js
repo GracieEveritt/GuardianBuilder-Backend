@@ -34,6 +34,7 @@ const AuthState = props => {
         }
         try {
             const res = await axios.get('/api/auth');
+            console.log('loadacct -res', res.data)
             dispatch({type: USER_LOADED, payload: res.data})
         } catch (err) {
             dispatch({type: AUTH_ERROR})
@@ -55,6 +56,7 @@ const AuthState = props => {
             });
             
             const res = await api.post('/api/accounts', formData, config);
+            console.log('register-res', res.data)
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data
@@ -81,8 +83,9 @@ const AuthState = props => {
             const api = axios.create({
                 baseURL: "http://localhost:5000"
             });
-            console.log('formData', formData)
+           
             const res = await api.post('/api/auth', formData, config);
+            console.log('login-res', res.data)
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
