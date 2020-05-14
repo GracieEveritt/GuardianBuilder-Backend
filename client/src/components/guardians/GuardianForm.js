@@ -11,7 +11,7 @@ const GuardianForm = (props) => {
     
     const { children, form, addGuardian, guardians, updateGuardian } = guardianContext;
     
-   console.log('GuardianForm - guardians', guardians)
+   
 
     const [guardian, setGuardian] = useState({
         first_name:'',
@@ -102,8 +102,7 @@ const GuardianForm = (props) => {
         const guardianIDs=guardians.map(guardian => {
             return guardian._id
         })
-        console.log('guardianIDs', guardianIDs)
-        console.log('guardian-Form', form)
+ 
         updateGuardian(form._id, guardianIDs)
         props.history.push('/draft')
 

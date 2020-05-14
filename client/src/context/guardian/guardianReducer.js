@@ -7,7 +7,8 @@ import {
     ADD_ACCOUNT,
     UPDATE_FORM,
     ADD_GUARDIAN,
-    GUARDIAN_ERROR
+    GUARDIAN_ERROR,
+    UPDATE_LIMITATIONS
 
 } from '../types';
 
@@ -30,6 +31,12 @@ export default (state,action) => {
             return {
                 ...state,
                 form: action.payload,
+                loading: false
+            }
+        case UPDATE_LIMITATIONS:
+            return {
+                ...state,
+                limitations: action.payload.limitations,
                 loading: false
             }
         case GUARDIAN_ERROR:

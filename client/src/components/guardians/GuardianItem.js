@@ -13,8 +13,7 @@ const GuardianItem = ({guardian}) => {
     const {guardians, form} = guardianContext;
 
     const { children,married,spouse,relationToParent,first_name,middle_name,last_name,suffix,address, primary,rank,ifpredecease,ifdivorce} = guardian;
-    console.log('guardian-item, guardians', guardians)
-    console.log('guardian item - form', form)
+    
     // const onDelete = () => {
     //     deleteChild(_id);
     //     clearCurrent();

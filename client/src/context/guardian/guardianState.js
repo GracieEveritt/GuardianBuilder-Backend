@@ -13,7 +13,8 @@ import {
     ADD_ACCOUNT,
     UPDATE_FORM,
     ADD_GUARDIAN,
-    GUARDIAN_ERROR
+    GUARDIAN_ERROR,
+    UPDATE_LIMITATIONS
    
 } from '../types';
 
@@ -26,7 +27,7 @@ const GuardianState = props => {
        children: null,
        form: null,
        account: null,
-       parents: null,
+       parents: [],
        guardians: [],
        limitations: null,
        error: null,
@@ -99,8 +100,9 @@ const GuardianState = props => {
         
         try {
             const res = await axios.put(`/api/forms/${form}/parents/limitations`, limitations,config);
-          
+            console.log('limitations', res.data)
             dispatch({type: UPDATE_FORM, payload: res.data})
+            dispatch({type: UPDATE_LIMITATIONS, payload: res.data})
         } catch (err) {
             dispatch({type: FORM_ERROR, payload: err.response.msg})
         }
