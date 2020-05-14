@@ -49,6 +49,7 @@ router.post('/', [auth,[
 //@desc   Update form
 //@access Private
 router.put('/:id/parents', auth, async (req, res) =>{
+    console.log('parents-api')
     const {parents, limitations, guardians, draft, final} = req.body;
     //Build object based on fields submitted
     console.log('api-req.body', req.body)
@@ -80,8 +81,7 @@ router.put('/:id/parents', auth, async (req, res) =>{
 });
 
 router.put('/:id/parents/limitations', auth, async (req, res) =>{
-    console.log('id', req.params.id)
-    console.log('req-body', req.body)
+   console.log('limitations-api')
     try {
         let form = await Guardianship.findById(req.params.id);
         if(!form) return res.status(404).json({msg: 'Form not found.'})
@@ -91,11 +91,34 @@ router.put('/:id/parents/limitations', auth, async (req, res) =>{
         }
         const filter = { _id: req.params.id}
         const update =  req.body 
-        console.log('api update', update)
+        
         form = await Guardianship.findByIdAndUpdate(filter,update, {new:true});
         const uform = await form.save();
             res.json(uform);
             console.log('after api form update', form)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+//addGuardians: api/forms/${formID}/?/guardians
+router.put('/:id/x/x/guardians', auth, async (req, res) =>{
+    console.log('api-req.body-guardians', req.body)
+    console.log('api-id', req.params.id)
+    try {
+        let form = await Guardianship.findById(req.params.id);
+        if(!form) return res.status(404).json({msg: 'Form not found.'})
+        //make sure account owns child -- not sure req.account.id is corret...
+        if(form.createdby.toString() !==req.account.id){
+            return res.status(401).json({msg: 'Not authorized.'});
+        }
+        const filter = { _id: req.params.id}
+        const update = { "guardians" : req.body }
+        form = await Guardianship.findByIdAndUpdate(filter,update, {new:true});
+        const uform = await form.save();
+            res.json(uform);
+            
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

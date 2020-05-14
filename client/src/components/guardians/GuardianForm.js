@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import ChildContext from '../../context/child/childContext'
 import GuardianContext from '../../context/guardian/guardianContext'
-// import Parents from './Parents'
+import Guardians from './Guardians'
 
 
 const GuardianForm = (props) => {
@@ -9,9 +9,9 @@ const GuardianForm = (props) => {
     const guardianContext = useContext(GuardianContext)
     
     
-    const { children, form, addGuardian } = guardianContext;
+    const { children, form, addGuardian, guardians, updateGuardian } = guardianContext;
     
-    console.log('Praent Form - children', children)
+   console.log('GuardianForm - guardians', guardians)
 
     const [guardian, setGuardian] = useState({
         first_name:'',
@@ -34,8 +34,7 @@ const GuardianForm = (props) => {
     const [count, setCount] = useState(1);
     const [couple,setCouple] = useState('')
     
-    console.log('couple', couple)
-    console.log('guardian', guardian)
+   
 
     const { first_name,middle_name, last_name, suffix, street, city, state, zipcode, married, relationToParent, spouse_first_name, spouse_middle_name, spouse_last_name,predecease, divorce} = guardian;
         
@@ -43,7 +42,7 @@ const GuardianForm = (props) => {
         if (couple==='yes'){
             setGuardian({...guardian, married: true, [e.target.name] : e.target.value})
         } else {
-        setGuardian({...guardian, [e.target.name] : e.target.value})}
+        setGuardian({...guardian, married: false, [e.target.name] : e.target.value})}
     }
 
     const onSubmit = e => {
@@ -54,8 +53,8 @@ const GuardianForm = (props) => {
         } 
         const rank = count
         
-        console.log('count', count)
-        console.log('Form-guardian', guardian)
+        // console.log('count', count)
+        // console.log('Form-guardian', guardian)
         
         const address = {
             street: street, 
@@ -63,10 +62,10 @@ const GuardianForm = (props) => {
             state: state, 
             zipcode: zipcode
         }
-        console.log('address', address)
+        
         
         const theguardian = {
-            children : [children],
+            children : children,
             married: married,
             spouse : (spouse_first_name + ' ' + spouse_middle_name + ' ' + spouse_last_name),
             relationToParent: relationToParent,
@@ -80,7 +79,7 @@ const GuardianForm = (props) => {
             ifpredecease: predecease,
             ifdivorce : divorce
         }
-        console.log('theguardian', theguardian)
+        // console.log('theguardian', theguardian)
         addGuardian(theguardian)
         setCount(count => count +1)
         setGuardian({
@@ -98,15 +97,15 @@ const GuardianForm = (props) => {
         })
     };
 
-    const addParentsToForm = () => {
-        console.log('addParentsToForm')
-        // const parentIDs=parents.map(parent => {
-        //     return parent._id
-        // })
-        // console.log('isnsideAddParentsToForm - parents', parentIDs)
-        // console.log('isnsideAddParentsToForm-form', form)
-        // updateParent(form, parentIDs)
-        // props.history.push('/limitations')
+    const addGuardiansToForm = () => {
+       
+        const guardianIDs=guardians.map(guardian => {
+            return guardian._id
+        })
+        console.log('guardianIDs', guardianIDs)
+        console.log('guardian-Form', form)
+        updateGuardian(form._id, guardianIDs)
+        props.history.push('/draft')
 
     }
     
@@ -121,7 +120,7 @@ const GuardianForm = (props) => {
                     <div>Step 4</div>
                 </div>
                 <div>
-                    <button className='btn btn-light btn-block' >Continue</button>
+                    <button onClick={addGuardiansToForm} className='btn btn-light btn-block' >Continue</button>
                 </div>
                 <h2 className='text-primary'>Guardians</h2>
                 <div>
@@ -139,7 +138,7 @@ const GuardianForm = (props) => {
                     <input type='text' placeholder='Suffix' name='suffix' value={suffix} onChange={onChange} />
                     <div>
                         <label>Address</label>
-                        <input type='text' placeholder='Street Address' name='street' value={street} onChange={onChange} />
+                        <input type='textarea' placeholder='Street Address' name='street' value={street} onChange={onChange} />
                         <input type='text' placeholder='City' name='city' value={city} onChange={onChange} />
                         <input type='text' placeholder='State' name='state' value={state} onChange={onChange} />
                         <input type='text' placeholder='Zip Code' name='zipcode' value={zipcode} onChange={onChange} />
@@ -162,7 +161,7 @@ const GuardianForm = (props) => {
                     </div>
                 </form>
             </div>
-        {/* <Parents /> */}
+        <Guardians />
         </>
     )
 }

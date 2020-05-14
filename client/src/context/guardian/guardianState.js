@@ -27,7 +27,7 @@ const GuardianState = props => {
        form: null,
        account: null,
        parents: null,
-       guardians: null,
+       guardians: [],
        limitations: null,
        error: null,
        loading: null
@@ -38,7 +38,7 @@ const GuardianState = props => {
     //Add child, 
     const createGuardianForm = async (children, account) => {
         
-        console.log('createForm -account', account)
+       
         
         // child._id = uuid;
         const config = {
@@ -48,17 +48,18 @@ const GuardianState = props => {
         }
         try {
             const res = await axios.post('/api/forms', children, config);
-            
+            console.log('add_form - api res.body', res.body)
             dispatch({type: ADD_FORM, payload: res.data, account:account})
             
            
         } catch (err) {
             dispatch({type: FORM_ERROR, payload: err.response.msg})
         }
+        console.log('add-account, account', account)
         dispatch({type: ADD_ACCOUNT, payload: account})
     }
     const addParent = async (parent) => {
-        console.log('State-addParent', parent)
+       
  
         const config = {
             headers: {
@@ -67,15 +68,14 @@ const GuardianState = props => {
         }
         try {
             const res = await axios.post('/api/parent', parent, config);
-            console.log('parent-api-res.data', res.data)
+            console.log('add-parent-res.data', res.data)
             dispatch({type: ADD_PARENT, payload: res.data})
         } catch (err) {
             dispatch({type: PARENT_ERROR, payload: err.response.msg})
         }
     }
     const updateParent = async (form, parents) => {
-       console.log('updateParents-form', form)
-       console.log('updateParents-parents', parents)
+ 
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ const GuardianState = props => {
         }
         try {
             const res = await axios.put(`/api/forms/${form}/parents`, parents, config);
-            console.log('api-response-updateform', res.data)
+          
             dispatch({type: UPDATE_FORM, payload: res.data})
         } catch (err) {
             dispatch({type: FORM_ERROR, payload: err.response.msg})
@@ -96,10 +96,10 @@ const GuardianState = props => {
             }
         }
         
-        console.log('addLimitations', limitations)
+        
         try {
             const res = await axios.put(`/api/forms/${form}/parents/limitations`, limitations,config);
-            console.log('api-response-updateform', res.data)
+          
             dispatch({type: UPDATE_FORM, payload: res.data})
         } catch (err) {
             dispatch({type: FORM_ERROR, payload: err.response.msg})
@@ -115,7 +115,7 @@ const GuardianState = props => {
     }
 
     const addGuardian = async (theguardian) => {
-        console.log('State-addParent', theguardian)
+       
  
         const config = {
             headers: {
@@ -128,6 +128,20 @@ const GuardianState = props => {
             dispatch({type: ADD_GUARDIAN, payload: res.data})
         } catch (err) {
             dispatch({type: GUARDIAN_ERROR, payload: err.response.msg})
+        }
+    }
+    const updateGuardian = async (formID, guardians) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await axios.put(`/api/forms/${formID}/x/x/guardians`, guardians, config);
+            console.log('api-form-response', res.data)
+            dispatch({type: UPDATE_FORM, payload: res.data})
+        } catch (err) {
+            dispatch({type: FORM_ERROR, payload: err.response.msg})
         }
     }
 
@@ -145,7 +159,8 @@ const GuardianState = props => {
             getParents,
             updateParent,
             addLimitations,
-            addGuardian
+            addGuardian,
+            updateGuardian
         }}>
             {props.children}
         </GuardianContext.Provider>

@@ -11,7 +11,7 @@ const ChildForm = (props) => {
     const { account } = authContext;
     const {addChild, current, clearCurrent, updateChild, children } = childContext;
     // const {createGuardianForm} = guardianContext;
-    console.log('ChildForm-account', account)
+    
     useEffect(() => {
         if(current !==null){
             setChild(current);
@@ -36,7 +36,7 @@ const ChildForm = (props) => {
     const { first_name, last_name, dob, type, birth, adopted} = child;
     
     const onChange = e => {
-        console.log('e', e.target)
+        
         if(e.target.name ==='type' && e.target.value === 'adopted') {
             console.log('test', )
             setChild({...child, adopted: true, birth: false, [e.target.name]: e.target.value})
@@ -47,7 +47,7 @@ const ChildForm = (props) => {
     }
 
     const onSubmit = e => {
-        console.log('onSubmit - child', child)
+       
         e.preventDefault();
         if(current === null){
             addChild(child);
@@ -69,7 +69,7 @@ const ChildForm = (props) => {
     }
 
     const createGuardian = () => {
-        console.log('CreateGuardian-account',account)
+        
         const childrenIDs=children.map(child => {
             return child._id
         })

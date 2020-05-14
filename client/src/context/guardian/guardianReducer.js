@@ -47,7 +47,8 @@ export default (state,action) => {
         case ADD_GUARDIAN:
             return {
                 ...state,
-                guardians: [...state.guardians, action.payload]
+                guardians: [action.payload, ...state.guardians],
+                loading: false
             }
         case PARENT_ERROR:
             return {

@@ -11,7 +11,7 @@ const Parents = () => {
     const {children, filtered, getChildren} = childContext;
     const guardianContext = useContext(GuardianContext);
     const {getParents, parents, loading} = guardianContext;
-    console.log('parents', parents)
+  
     useEffect(()=>{
         getParents();
         //eslint-disable-next-line

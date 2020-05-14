@@ -11,7 +11,7 @@ const Guardianship = (props) => {
     const {children, parents, guardians,  form, limitations} = guardianContext;
     const { account } = authContext;
 
-    console.log('Guardianship-account', account)
+    
 
     
     return(

@@ -45,8 +45,9 @@ router.post('/', [auth,[
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()});
     }
+    console.log('guardian-req.body', req.body)
     const {children,married,spouse,relationToParent,first_name,middle_name,last_name,suffix,address, primary,rank,ifpredecease,ifdivorce} = req.body;
-
+    console.log('guardian-reqbody-post', req.body)
 
     try {
         const newGuardian = new Guardian({

@@ -3,15 +3,18 @@ import PropTypes from 'prop-types'
 import ChildContext from '../../context/child/childContext'
 import GuardianContext from '../../context/guardian/guardianContext'
 
-const ParentItem = ({parent}) => {
+const GuardianItem = ({guardian}) => {
     const childContext = useContext(ChildContext);
     const guardianContext = useContext(GuardianContext);
     
     // const {deleteChild, setCurrent, clearCurrent} = childContext;
     // const {parents, _id, first_name, last_name, dob, type, adopted, birth} = child;
     
-    const { first_name, middle_name, last_name, suffix, spouse, deceased, birth_parent, adoptee_parent} = parent;
+    const {guardians, form} = guardianContext;
 
+    const { children,married,spouse,relationToParent,first_name,middle_name,last_name,suffix,address, primary,rank,ifpredecease,ifdivorce} = guardian;
+    console.log('guardian-item, guardians', guardians)
+    console.log('guardian item - form', form)
     // const onDelete = () => {
     //     deleteChild(_id);
     //     clearCurrent();
@@ -22,11 +25,17 @@ const ParentItem = ({parent}) => {
             <h3 className='text-primary text-left'>
                 {first_name} {last_name}{' '} 
                 <span style={{float: 'right'}}
-                className={'badge ' + (spouse === 'true' ? 'badge-success' : 'badge-primary')
+                className={'badge ' + (primary === 'true' ? 'badge-success' : 'badge-primary')
             }>
-                {spouse ? 'Spouse' : ''}
+                {primary ? 'Primary' : 'Alternative'}
                 </span>
             </h3> 
+            {married ? <p>Spouse: {spouse}</p> : ''}
+            {!primary ? 
+                <span style={{float: 'right'}}
+                    className={'badge ' + (primary === 'false' ? 'badge-success' : 'badge-primary')}>
+                        Order: {rank} </span>
+                : ''}
             <p>
                 {/* <button onClick={() => setCurrent(child)} className='btn btn-dark bt-sm'>Edit</button>
                 <button onClick={onDelete} className='btn btn-dark bt-sm'>Delete</button> */}
@@ -35,8 +44,8 @@ const ParentItem = ({parent}) => {
     )
 }
 
-ParentItem.propTypes ={
-    parent: PropTypes.object.isRequired
+GuardianItem.propTypes ={
+    guardian: PropTypes.object.isRequired
 }
 
-export default ParentItem
+export default GuardianItem

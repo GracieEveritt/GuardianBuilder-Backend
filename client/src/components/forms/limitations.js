@@ -8,7 +8,7 @@ const Limitations = (props) => {
 
     const guardianContext = useContext(GuardianContext)
     const { form, addLimitations } = guardianContext;
-    console.log('liminatoins-form', form)
+ 
 
     const [limitations, setLimitations] = useState('');
 
@@ -19,7 +19,7 @@ const Limitations = (props) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log('formid', form._id)
+       
         const limits = {limitations}
         addLimitations(form._id, limits)
         

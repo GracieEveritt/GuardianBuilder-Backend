@@ -11,7 +11,7 @@ const ParentForm = (props) => {
     
     const { addParent, updateParent, children, parents, form } = guardianContext;
     
-    console.log('Praent Form - children', children)
+   
     // useEffect(() => {
     //     if(current !==null){
     //         setChild(current);
@@ -41,20 +41,20 @@ const ParentForm = (props) => {
     
     const onChange = e => {
         if(e.target.id ==='adoptee_parent' && e.target.value === 'true') {
-            console.log('if adoptee true')
+        
             setParent({...parent, children: children, birth_parent: false, adoptee_parent: true, [e.target.name]: e.target.value})
             
         }  
         else {
-            console.log('else')
+           
             setParent({...parent, children: children,  [e.target.name]: e.target.value})
         }
         if (e.target.name === 'spouse' && e.target.value === 'true') {
-            console.log('if-spouse')
+            
             setParent({...parent, spouse: true})
         }
         if (e.target.name === 'deceased' && e.target.value === 'true') {
-            console.log('parent.deceased')
+            
             setParent({...parent, deceased: true})
         }
         
@@ -62,7 +62,7 @@ const ParentForm = (props) => {
 
     const onSubmit = e => {
        
-        console.log('Form-parent', parent)
+        
         e.preventDefault();
         // if(current === null){
         //     addChild(child);
@@ -84,12 +84,11 @@ const ParentForm = (props) => {
     };
 
     const addParentsToForm = () => {
-        console.log('addParentsToForm')
+       
         const parentIDs=parents.map(parent => {
             return parent._id
         })
-        console.log('isnsideAddParentsToForm - parents', parentIDs)
-        console.log('isnsideAddParentsToForm-form', form)
+      
         updateParent(form, parentIDs)
         props.history.push('/limitations')
 
