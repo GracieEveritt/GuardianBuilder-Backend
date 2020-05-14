@@ -10,10 +10,7 @@ const GuardianSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId
     }],
     married: Boolean,
-    spouse: {
-        ref: "Guardian",
-        type: mongoose.Schema.Types.ObjectId
-    },
+    spouse: String,
     relationToParent: String,
     first_name: String,
     middle_name: String,
@@ -29,6 +26,8 @@ const GuardianSchema = mongoose.Schema({
     deceased: {Boolean, default: false},
     primary: Boolean,
     rank: Number,
+    ifpredecease: String,
+    ifdivorce: String,
     created: {
         type: Date,
         default: Date.now

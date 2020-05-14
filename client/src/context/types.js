@@ -27,3 +27,5 @@ export const PARENT_ERROR = 'PARENT_ERROR';
 export const GET_PARENT = 'GET_PARENT';
 export const ADD_ACCOUNT = 'ADD_ACCOUNT';
 export const UPDATE_FORM = 'UPDATE_FORM';
+export const ADD_GUARDIAN = 'ADD_GUARDIAN';
+export const GUARDIAN_ERROR = 'GUARDIAN_ERROR';

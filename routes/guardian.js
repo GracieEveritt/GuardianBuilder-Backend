@@ -37,7 +37,7 @@ router.get('/', auth, async (req, res) =>{
 //@route  POST api/parent
 //@desc   Add new guardian by childID
 //@access Private
-router.post('/:id', [auth,[
+router.post('/', [auth,[
     check('first_name', 'First name is required').not().isEmpty(),
     check('last_name', 'Last name is required').not().isEmpty()
     ]], async (req, res) => {
@@ -45,16 +45,13 @@ router.post('/:id', [auth,[
         if(!errors.isEmpty()){
             return res.status(400).json({errors: errors.array()});
     }
-    const {married, relationToParent, first_name, middle_name, last_name, suffix, 
-        street, city, state, zipcode, divorced,
-        deceased, primary, rank} = req.body;
+    const {children,married,spouse,relationToParent,first_name,middle_name,last_name,suffix,address, primary,rank,ifpredecease,ifdivorce} = req.body;
 
 
     try {
         const newGuardian = new Guardian({
-            married,relationToParent, first_name, middle_name, last_name, suffix, 
-            street, city, state, zipcode, divorced, deceased, primary, rank,
-            createdby: req.account.id,children: req.params.id            
+            children,married,spouse,relationToParent,first_name,middle_name,last_name,suffix,address, primary,rank,ifpredecease,ifdivorce,
+            createdby: req.account.id
         })
         const guardian = await newGuardian.save();
         res.json(guardian)

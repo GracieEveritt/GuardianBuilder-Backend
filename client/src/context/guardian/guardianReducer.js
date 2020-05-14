@@ -5,7 +5,9 @@ import {
     PARENT_ERROR,
     GET_PARENT,
     ADD_ACCOUNT,
-    UPDATE_FORM
+    UPDATE_FORM,
+    ADD_GUARDIAN,
+    GUARDIAN_ERROR
 
 } from '../types';
 
@@ -30,6 +32,7 @@ export default (state,action) => {
                 form: action.payload,
                 loading: false
             }
+        case GUARDIAN_ERROR:
         case FORM_ERROR:
             return {
                 ...state,
@@ -40,6 +43,11 @@ export default (state,action) => {
                 ...state,
                 parents: [action.payload, ...state.parents],
                 loading: false
+            }
+        case ADD_GUARDIAN:
+            return {
+                ...state,
+                guardians: [...state.guardians, action.payload]
             }
         case PARENT_ERROR:
             return {

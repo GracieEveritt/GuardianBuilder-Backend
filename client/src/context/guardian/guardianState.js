@@ -11,7 +11,9 @@ import {
     PARENT_ERROR,
     GET_PARENT,
     ADD_ACCOUNT,
-    UPDATE_FORM
+    UPDATE_FORM,
+    ADD_GUARDIAN,
+    GUARDIAN_ERROR
    
 } from '../types';
 
@@ -112,6 +114,23 @@ const GuardianState = props => {
         }
     }
 
+    const addGuardian = async (theguardian) => {
+        console.log('State-addParent', theguardian)
+ 
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            const res = await axios.post('/api/guardian', theguardian, config);
+            console.log('guardian-api-res.data', res.data)
+            dispatch({type: ADD_GUARDIAN, payload: res.data})
+        } catch (err) {
+            dispatch({type: GUARDIAN_ERROR, payload: err.response.msg})
+        }
+    }
+
     return (
         <GuardianContext.Provider value={{
             children: state.children,
@@ -125,7 +144,8 @@ const GuardianState = props => {
             addParent,
             getParents,
             updateParent,
-            addLimitations
+            addLimitations,
+            addGuardian
         }}>
             {props.children}
         </GuardianContext.Provider>
