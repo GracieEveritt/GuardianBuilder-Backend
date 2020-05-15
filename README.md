@@ -1,11 +1,10 @@
 ## Project Links
+-**Git Repository**: (https://github.com/GracieEveritt/GuardianBuilder-Backend)
 -**Front-End Client Workflow**: (https://docs.google.com/drawings/d/1ZWztRNUUPXq2OBQTLWv08I_GqdqGAxn4i3naf5MiK6s/edit)
 -**React Architecture**: (https://docs.google.com/drawings/d/1_K5xBjbYRcydtaai-uOojxBlQ18Pkfm7F4C8_Lof9pM/edit)   
 -**Back-End Models**: (https://docs.google.com/drawings/d/1-bd-V2B4PMqvOEILsvVrXtMlL0CGMEgZI5fRQTZj-Zg/edit)  
--**FrontEnd Deployment**:  
--**BackEnd Deployment**:  
-https://guardian-builder.herokuapp.com/ | https://git.heroku.com/guardian-builder.git
-https://git.heroku.com/guardian-builder.git
+-**Heroku Deployment -- full app** :  (https://git.heroku.com/guardian-builder.git)
+
 
 ## Project Description
 Online resource for attorney and client to streamline the estate document building process. 
@@ -26,11 +25,11 @@ CSS | Beautify frontend | 1/2 day | Thurs, May 13
 
 ## Timeline
 ### Estimated Time -- 36 hours
-Task | Time Estimate | Time Invested | Actual Time (34 hours)
+Task | Time Estimate | Time Invested | Actual Time (35 hours)
 ------|---------------|---------------|------------
 BE Models Built | 3 hours | 3 hours  | 3 hours
 BE Route-View-Controllers | 2 hours | 2 hours | 2 hours
-Heroku Deployment | 2 hours | 9:40am  | 
+Heroku Deployment | 2 hours | 1 hour  | 1 hour 
 FE Basic Build | 1 hour | 1 hour | 1 hour 
 JWT Research & Implementation | 6 hours | 6 hours | 6 hours 
 Login & Registration Components w JWT  | 4 hours | 4 hours | 4 hours
@@ -50,7 +49,8 @@ Final CSS | 2 hours | 2 hours | 2 hours
 -Credit Card Page - create/edit    
 -Attorney Dashboard
 
-## Credits/Aditional Libraries
--react-moment
+## Credits/Additional Libraries
+-react-moment (bugged out so had to remove the code--dates still need formatting)
+
 ## Code Snipet
 
