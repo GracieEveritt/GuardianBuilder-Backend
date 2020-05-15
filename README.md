@@ -4,6 +4,7 @@
 -**Back-End Models**: (https://docs.google.com/drawings/d/1-bd-V2B4PMqvOEILsvVrXtMlL0CGMEgZI5fRQTZj-Zg/edit)  
 -**FrontEnd Deployment**:  
 -**BackEnd Deployment**:  
+https://guardian-builder.herokuapp.com/ | https://git.heroku.com/guardian-builder.git
 
 ## Project Description
 Online resource for attorney and client to streamline the estate document building process. 
@@ -28,7 +29,7 @@ Task | Time Estimate | Time Invested | Actual Time (34 hours)
 ------|---------------|---------------|------------
 BE Models Built | 3 hours | 3 hours  | 3 hours
 BE Route-View-Controllers | 2 hours | 2 hours | 2 hours
-Heroku Deployment | 2 hours |  | 
+Heroku Deployment | 2 hours | 9:40am  | 
 FE Basic Build | 1 hour | 1 hour | 1 hour 
 JWT Research & Implementation | 6 hours | 6 hours | 6 hours 
 Login & Registration Components w JWT  | 4 hours | 4 hours | 4 hours
