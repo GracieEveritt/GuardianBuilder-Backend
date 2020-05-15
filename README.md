@@ -1,6 +1,6 @@
 ## Project Links
--**Git Repository**: (https://github.com/GracieEveritt/GuardianBuilder-Backend)
--**Front-End Client Workflow**: (https://docs.google.com/drawings/d/1ZWztRNUUPXq2OBQTLWv08I_GqdqGAxn4i3naf5MiK6s/edit)
+-**Git Repository**: (https://github.com/GracieEveritt/GuardianBuilder-Backend)  
+-**Front-End Client Workflow**: (https://docs.google.com/drawings/d/1ZWztRNUUPXq2OBQTLWv08I_GqdqGAxn4i3naf5MiK6s/edit)  
 -**React Architecture**: (https://docs.google.com/drawings/d/1_K5xBjbYRcydtaai-uOojxBlQ18Pkfm7F4C8_Lof9pM/edit)   
 -**Back-End Models**: (https://docs.google.com/drawings/d/1-bd-V2B4PMqvOEILsvVrXtMlL0CGMEgZI5fRQTZj-Zg/edit)  
 -**Heroku Deployment -- full app** :  (https://git.heroku.com/guardian-builder.git)
@@ -49,7 +49,7 @@ Final CSS | 2 hours | 2 hours | 2 hours
 -Credit Card Page - create/edit    
 -Attorney Dashboard
 
-## Credits/Additional Libraries
+## Credits/Aditional Libraries
 -react-moment (bugged out so had to remove the code--dates still need formatting)
 
 ## Code Snipet

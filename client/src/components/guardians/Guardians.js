@@ -12,10 +12,10 @@ const Guardians = () => {
     const guardianContext = useContext(GuardianContext);
     const {guardians, loading} = guardianContext;
     
-    useEffect(()=>{
-        // getParents();
-        //eslint-disable-next-line
-    }, []);
+    // useEffect(()=>{
+    //     getGuardians();
+    //     eslint-disable-next-line
+    // }, []);
 
     if(guardians !== null && guardians.length === 0 && !loading){
         return <h4 className='please-add'>Please add a guardian</h4>
