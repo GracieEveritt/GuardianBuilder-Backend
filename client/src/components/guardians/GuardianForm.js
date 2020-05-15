@@ -87,13 +87,17 @@ const GuardianForm = (props) => {
             middle_name: '',
             last_name: '',
             suffix: '',
-            address: {street: '', city: '', state: '', zipcode: ''},
             married: '',
-            primary: '',
             relationToParent: '',
-            children: '',
-            spouse: '',
-            rank: ''           
+            street: '',
+            city: '',
+            state: '',
+            zipcode: '',
+            spouse_first_name: '',
+            spouse_middle_name: '',
+            spouse_last_name: '',
+            predecease: '',
+            divorce : ''          
         })
     };
 
@@ -130,7 +134,7 @@ const GuardianForm = (props) => {
                     </form>
                 </div>
                 <form onSubmit={onSubmit}>
-                    <h2 className='text-primary'>Primary Guardian</h2>
+                    <h2 className='text-primary'>Add Guardian</h2>
                     <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
                     <input type='text' placeholder='Middle Name' name='middle_name' value={middle_name} onChange={onChange} />
                     <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
@@ -142,7 +146,7 @@ const GuardianForm = (props) => {
                         <input type='text' placeholder='State' name='state' value={state} onChange={onChange} />
                         <input type='text' placeholder='Zip Code' name='zipcode' value={zipcode} onChange={onChange} />
                     </div>
-                    <input type='text' placeholder='Relation to You' name='suffix' value={suffix} onChange={onChange} />                               
+                    <input type='text' placeholder='Relation to You' name='relationToParent' value={relationToParent} onChange={onChange} />                               
                     {couple === 'yes' ? 
                         <div>
                             <h3>Add Spouse</h3>
