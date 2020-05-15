@@ -93,21 +93,24 @@ const ParentForm = (props) => {
         props.history.push('/limitations')
 
     }
+    const divStyle = {
+        background : '#6e00ff',
+        color: 'white'
+    }
     return(
-        <>
-        <div className='form-container'>
-            <div className='form-header'>Guardianship Form</div>
-            <div className='form-status-bar'>
-                <div>Step 1</div>
-                <div>Step 2</div>
-                <div>Step 3</div>
-                <div>Step 4</div>
+        <div className='step-1'>
+            <div className='status-bar'>
+                <div className='form-header-status-bar'>Guardianship Form</div>
+                <div className='form-status-bar'>
+                    <div>Children</div>
+                    <div style={divStyle}>Parents</div>
+                    <div>Limits</div>
+                    <div>Guardians</div>
+                </div>
             </div>
-            <div>
-                <button className='btn btn-light btn-block' onClick={addParentsToForm}>Continue</button>
-            </div>
-            <form onSubmit={onSubmit}>
-                <h2 className='text-primary'>Parent Form</h2>
+        <div className='children'>  
+            <form className='form-child' onSubmit={onSubmit}>
+                <h2 className='text-primary'>Add Parent</h2>
                 <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
                 <input type='text' placeholder='Middle Name' name='middle_name' value={middle_name} onChange={onChange} />
                 <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
@@ -124,10 +127,14 @@ const ParentForm = (props) => {
                 <div>
                     <input type="submit" value="Add Parent" className='btn btn-primary btn-block'/>
                 </div>
+                <div>
+                <button className='continue btn btn-light btn-block' onClick={addParentsToForm}>Continue</button>
+                </div>
             </form>
-        </div>
+        
         <Parents />
-        </>
+        </div>
+        </div>
     )
 }
 

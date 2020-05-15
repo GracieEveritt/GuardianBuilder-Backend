@@ -18,7 +18,7 @@ const Parents = () => {
     }, []);
 
     if(parents !== null && parents.length === 0 && !loading){
-        return <h4>Please add a parent</h4>
+        return <h4 className='please-add'>Please add a parent</h4>
     }
 
     return(

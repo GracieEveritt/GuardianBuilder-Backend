@@ -18,7 +18,7 @@ const Guardians = () => {
     }, []);
 
     if(guardians !== null && guardians.length === 0 && !loading){
-        return <h4>Please add a guardian</h4>
+        return <h4 classNmae='please-add'>Please add a guardian</h4>
     }
 
     return(

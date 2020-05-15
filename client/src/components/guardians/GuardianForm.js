@@ -111,20 +111,23 @@ const GuardianForm = (props) => {
         props.history.push('/draft')
 
     }
-    
+    const divStyle = {
+        background : '#6e00ff',
+        color: 'white'
+    }
     return(
-        <>
-            <div className='form-container'>
-                <div className='form-header'>Guardianship Form</div>
+        <div className='step-1'>
+            <div className='status-bar'>
+                <div className='form-header-status-bar'>Guardianship Form</div>
                 <div className='form-status-bar'>
-                    <div>Step 1</div>
-                    <div>Step 2</div>
-                    <div>Step 3</div>
-                    <div>Step 4</div>
+                    <div>Children</div>
+                    <div >Parents</div>
+                    <div>Limits</div>
+                    <div style={divStyle}>Guardians</div>
                 </div>
+            </div>
+            <div className='children'>   
                 <div>
-                    <button onClick={addGuardiansToForm} className='btn btn-light btn-block' >Continue</button>
-                </div>
                 <h2 className='text-primary'>Guardians</h2>
                 <div>
                     <h3>Will this {count===1 ? 'first' : 'alternative'} guardian be a couple?</h3>
@@ -133,13 +136,13 @@ const GuardianForm = (props) => {
                         <input type='radio' name='couple' value={couple} onClick={()=>setCouple('no')}/><label>No</label>
                     </form>
                 </div>
-                <form onSubmit={onSubmit}>
+                <form className='form-child' onSubmit={onSubmit}>
                     <h2 className='text-primary'>Add Guardian</h2>
                     <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
                     <input type='text' placeholder='Middle Name' name='middle_name' value={middle_name} onChange={onChange} />
                     <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
                     <input type='text' placeholder='Suffix' name='suffix' value={suffix} onChange={onChange} />
-                    <div>
+                    <div className='form-group'>
                         <label>Address</label>
                         <input type='textarea' placeholder='Street Address' name='street' value={street} onChange={onChange} />
                         <input type='text' placeholder='City' name='city' value={city} onChange={onChange} />
@@ -162,10 +165,14 @@ const GuardianForm = (props) => {
                     <div>
                         <input type="submit" value="Add Guardian" className='btn btn-primary btn-block'/>
                     </div>
+                    <div>
+                        <button onClick={addGuardiansToForm} className='btn btn-light btn-block' >Continue</button>
+                    </div>
                 </form>
-            </div>
+                </div>
         <Guardians />
-        </>
+        </div>
+        </div>
     )
 }
 

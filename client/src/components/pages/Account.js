@@ -57,7 +57,7 @@ const Account = (props) => {
     
     return(
     <div className='form-container'>
-            <h1>myInfo</h1>
+            <h1 className="needs-color">myInfo</h1>
             <form onSubmit={onSubmit}>
                 <div className='form-group'>
                     <label htmlFor='first_name'>First Name</label>

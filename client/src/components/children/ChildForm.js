@@ -80,10 +80,8 @@ const ChildForm = (props) => {
     }
     return(
         <>
-        <div>
-            <button className='btn btn-light btn-block' onClick={createGuardian}>Continue</button>
-        </div>
-        <form onSubmit={onSubmit}>
+        
+        <form className='form-child' onSubmit={onSubmit}>
             <h2 className='text-primary'>{current ? 'Edit Child' : 'Add Child'}</h2>
             <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
             <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
@@ -100,7 +98,11 @@ const ChildForm = (props) => {
             {current && <div>
                 <button className='btn btn-light btn-block' onClick={clearAll}>Clear</button>
                 </div>}
+            <div>
+                <button className='continue btn btn-light btn-block' onClick={createGuardian}>Continue</button>
+            </div>
         </form>
+        
         </>
     )
 }

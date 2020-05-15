@@ -11,19 +11,24 @@ const Guardianship = (props) => {
     const {children, parents, guardians,  form, limitations} = guardianContext;
     const { account } = authContext;
 
-    
+    const divStyle = {
+        background : '#6e00ff',
+        color: 'white'
+    }
 
     
     return(
-        <div className='form-container'>
-            <div className='form-header'>Guardianship Form</div>
-            <div className='form-status-bar'>
-                <div>Step 1</div>
-                <div>Step 2</div>
-                <div>Step 3</div>
-                <div>Step 4</div>
+        <div className='step-1'>
+            <div className='status-bar'>
+                <div className='form-header-status-bar'>Guardianship Form</div>
+                <div className='form-status-bar'>
+                    <div style={divStyle}>Children</div>
+                    <div>Parents</div>
+                    <div>Limits</div>
+                    <div>Guardians</div>
+                </div>
             </div>
-            <div className='form-inputs'>
+            <div className='children'>
                 <ChildForm {...props} />
                 <Children />
             </div>

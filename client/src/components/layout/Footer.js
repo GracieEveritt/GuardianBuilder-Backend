@@ -17,18 +17,17 @@ const Footer = ({ title, icon}) => {
     }
 
     return(
-        <div className="navbar bg-primary">
+        <div className="navbar bg-primary footer">
             <ul>
-
                 <li>
                     <Link to='/about'>About</Link>
                 </li>
                 <li>
                 <Link to='/support'>Support</Link>
-            </li>
-            <li>
-                <Link to='/library'>Library</Link>
-            </li>
+                </li>
+                <li>
+                    <Link to='/library'>Library</Link>
+                </li>
             </ul>
         </div>
     );

@@ -15,11 +15,11 @@ const Children = () => {
     }, []);
 
     if(children !== null && children.length === 0 && !loading){
-        return <h4>Please add a child</h4>
+        return <h4 className='please-add'>Please add a child</h4>
     }
 
     return(
-        <Fragment>
+        <Fragment className='child-cards'>
             {children !== null && !loading ? (<TransitionGroup>
                 {filtered !==null ? 
                 filtered.map(child => (

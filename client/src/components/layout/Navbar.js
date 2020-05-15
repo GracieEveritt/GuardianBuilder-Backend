@@ -29,11 +29,11 @@ const Navbar = ({ title, icon}) => {
 
     const guestLinks = (
         <Fragment>
-            <li>
-                <Link to='/register'>Register</Link>
+            <li className='nav-link'>
+                <Link to='/register' className='nav-link'><span className='nav-link'>Register</span></Link>
             </li>
             <li>
-                <Link to='/login'>Login</Link>
+                <Link to='/login' className='nav-link'>Login</Link>
             </li>
         </Fragment>
     )
@@ -41,11 +41,10 @@ const Navbar = ({ title, icon}) => {
     return(
         <div className="navbar bg-primary">
             <h1>
-                <i className={icon}/> {title}
+                <i className={icon}/> &nbsp;&nbsp; {title}
             </h1>
             <ul>
                 {isAuthenticated ? authLinks : guestLinks}
-
             </ul>
         </div>
     );

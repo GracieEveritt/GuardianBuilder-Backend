@@ -15,17 +15,19 @@
   opacity: 0;
   transition: opacity 1000ms ease-in;
 }
-input {
-  border: 1px solid black;
+input, .form-group label {
+  /* border: 1px solid black; */
   margin-left: 10px;
+  color: var(--primary-color);
+  font-size: .8rem;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /* Global Styles */
 :root {
-  --primary-color: #003699;
-  --dark-color: #333333;
+  --primary-color: #6f7077;
+  --dark-color: #181717;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -41,8 +43,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
-  color: #333;
+  background-color: #30313a;
+  color: var(--primary-color);
 }
 
 a {
@@ -50,7 +52,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+.link, a:hover {
   color: #666;
 }
 
@@ -94,6 +96,11 @@ img {
 
 .text-primary {
   color: var(--primary-color);
+  text-align: center;
+}
+
+.login-text-primary {
+  color: var(--primary-color);
 }
 
 .text-dark {
@@ -119,7 +126,125 @@ img {
   margin: 0.7rem 0;
 }
 
+.needs-color {
+  color: var(--primary-color);
+}
+
+.myForms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.myForm-h1 {
+  font-size: .8rem;
+}
+
+.myForms-div {
+  border: 6px, var(--light-color);
+  box-shadow: 5px 5px 1px  var(--primary-color);
+  margin-top: 20px;
+  width: 300px;
+  height: 150px;
+  background: var(--dark-color);
+}
+.myForms-div h2 {
+  padding-top: 30px;
+
+}
+.myForms-div h6 {
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.status-bar {
+  margin:0 150px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.form-header-status-bar {
+  font-size: 1.3rem;
+  color: rgb(221, 218, 218);
+}
+.form-status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  
+  
+}
+.children {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(221, 218, 218, 0.077);
+}
+.limitations {
+  background-color: rgba(221, 218, 218, 0.077);
+}
+.limits-status-bar {
+  padding: 10px 0;
+}
+.the-limits input  {
+  padding-left: 10px;
+}
+.limits-button {margin-bottom: 40px}
+.limits-form {
+  width: 430px;
+  height: 100px;
+}
+.continue {
+  /* align-self: flex-end; */
+  order: -1;
+}
+.form-status-bar div {
+  border: 1px solid white;
+  padding: 5px 21px;
+}
+.form-child input  {
+  margin: 7px 0;
+}
+.form-child h2 {
+  padding-top: 5px;
+}
+.continue {
+  background : #6e00ff;
+  color : white;
+  margin-bottom: 15px;
+}
+.card {
+  margin-right: 100px;
+  margin-top: 30px;
+}
+.form-child input[type='radio'] {
+  margin: 0 15px;
+}
+.step-1 {
+  
+  margin: 0 80px;
+}
+.form-child {
+  /* border: 1px solid white; */
+  margin-left: 50px;
+  margin-top: 10px;
+  padding: 0 50px;
+}
+.please-add {
+  
+  vertical-align: center;
+  padding-top: 150px;
+  width: 300px;
+}
+.parent-card {
+  height: 100px;
+  width: 250px;
+  margin: 20px 30px;
+}
+
 /* List */
+.nav-list a{
+  font-size: 2rem;
+  color: red;
+}
 .list {
   margin: 0.5rem 0;
 }
@@ -316,6 +441,9 @@ img {
 }
 
 /* Forms */
+
+
+
 input {
   margin: 1.2rem 0;
 }
@@ -330,6 +458,8 @@ input[type='text'],
 input[type='email'],
 input[type='password'],
 input[type='date'],
+input[type='tel'],
+input[type='radio']
 select,
 textarea {
   display: block;
@@ -344,25 +474,52 @@ button {
   font: inherit;
 }
 
+
+
 .form-group {
-  margin: 1.2rem 0;
+  margin: .1rem 0;
 }
 
 .form-group input {
   margin: 0.2rem 0;
 }
 
-.form-container {
+.login-form-container, .form-container {
   max-width: 500px;
-  margin: 2rem auto;
+  margin: .5rem auto;
   overflow: hidden;
   padding: 0 2rem;
+  margin-bottom: 80px;
+ 
+
 }
+/* form {
+  display: flex;
+}
+.form-group {
+  flex-grow: 1;
+} */
+.footer {
+  align-items: center;
+  /* position: sticky; */
+  margin-top: 100px;
+}
+
 
 .form-container h1,
 h2,
 h3 {
   text-align: center;
+}
+
+.login-form-container h1 {
+  text-align: center;
+  max-width: 500px;
+  margin: 1rem auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  color: var(--primary-color);
+  
 }
 
 table th,
@@ -386,6 +543,7 @@ table th {
   border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .navbar ul {
@@ -396,6 +554,7 @@ table th {
   color: #fff;
   padding: 0.45rem;
   margin: 0 0.25rem;
+  font-size: 1.25rem;
 }
 
 .navbar a:hover {
@@ -461,4 +620,7 @@ table th {
     text-align: center;
     justify-content: center;
   }
+
+ 
+
 }
