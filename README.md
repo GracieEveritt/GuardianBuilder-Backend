@@ -5,6 +5,7 @@
 -**FrontEnd Deployment**:  
 -**BackEnd Deployment**:  
 https://guardian-builder.herokuapp.com/ | https://git.heroku.com/guardian-builder.git
+https://git.heroku.com/guardian-builder.git
 
 ## Project Description
 Online resource for attorney and client to streamline the estate document building process. 

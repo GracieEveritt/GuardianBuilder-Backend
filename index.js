@@ -16,7 +16,7 @@ app.use(cors());
 app.use(morgan('dev'))
 
 //remove this when deploy
-app.get('/', (req, res) => res.json({msg:'Welcome to the GuardianBuilder API'}));
+// app.get('/', (req, res) => res.json({msg:'Welcome to the GuardianBuilder API'}));
 
 app.use('/api/accounts', require('./routes/accounts'));
 app.use('/api/auth', require('./routes/auth'));
