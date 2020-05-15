@@ -24,19 +24,20 @@ CSS | Beautify frontend | 1/2 day | Thurs, May 13
 
 ## Timeline
 ### Estimated Time -- 36 hours
-Task | Time Estimate | Time Invested | Actual Time (56 hours)
+Task | Time Estimate | Time Invested | Actual Time (34 hours)
 ------|---------------|---------------|------------
 BE Models Built | 3 hours | 3 hours  | 3 hours
-BE Route-View-Controllers | 2 hours |  | 
+BE Route-View-Controllers | 2 hours | 2 hours | 2 hours
 Heroku Deployment | 2 hours |  | 
 FE Basic Build | 1 hour | 1 hour | 1 hour 
 JWT Research & Implementation | 6 hours | 6 hours | 6 hours 
 Login & Registration Components w JWT  | 4 hours | 4 hours | 4 hours
 Dashboard Basic Component Build | 3 hours | 3 hours | 3 hours
-All-Forms Component | 2 hours | 1 hour | 
-Guardian Form Component | 3 hours |  | 
+All-Forms Component | 2 hours | 2 hours | 2 hours
+Guardian Form Component | 3 hours | 3 hours | 3 hours
 Child CRUD | 6 hours | 6 hours | 6 hours 
-Dashboard CRUD | 4 hours |  | 
+Dashboard CRUD | 4 hours | 2 hours | 2 hours 
+Final CSS | 2 hours | 2 hours | 2 hours
 
 
 ## Post-MVP  
