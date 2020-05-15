@@ -3,11 +3,11 @@ import React from 'react'
 const Support = () => {
     return(
         <>
-        <div>
-            <h3>Support Page</h3>
+        <div className='support'>
+            <h1>Support Page</h1>
         </div>
-        <div>
-            <h4>XYZ Lawfirm</h4>
+        <div className='firm'>
+            <h3>XYZ Lawfirm</h3>
             <p>100 Main Street, Suite 100</p>
             <p>Telluride, CO 81435</p>
             <p>866-555-1234</p>

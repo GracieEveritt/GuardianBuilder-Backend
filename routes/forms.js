@@ -13,7 +13,7 @@ const Guardianship = require('../models/Guardianship')
 //@access Private
 router.get('/', auth, async (req, res) =>{
     try {
-        const forms = await Guardianship.find({account: req.account.id}).sort({date:-1});
+        const forms = await Guardianship.find({createdby: req.account.id}).sort({date:-1});
         res.json(forms);
     } catch (err) {
         console.error(err.message);

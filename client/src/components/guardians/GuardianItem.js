@@ -20,7 +20,7 @@ const GuardianItem = ({guardian}) => {
     // }
 
     return(
-        <div className='card bg-light'>
+        <div className='guardian-card card bg-light'>
             <h3 className='text-primary text-left'>
                 {first_name} {last_name}{' '} 
                 <span style={{float: 'right'}}

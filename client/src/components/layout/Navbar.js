@@ -18,7 +18,7 @@ const Navbar = ({ title, icon}) => {
 
     const authLinks = (
         <Fragment>
-            <li>Hello {account && account.first_name}</li>
+         <Link to='/forms'>   <li>Hello {account && account.first_name}</li></Link>
             <li>
                 <a onClick={onLogout} href="#!">
                     <i className='fas fa-sign-out-alt'></i> <span className='hide-sm'>Logout</span>

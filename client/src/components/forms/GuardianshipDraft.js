@@ -3,8 +3,9 @@ import ChildContext from '../../context/child/childContext'
 import GuardianContext from '../../context/guardian/guardianContext'
 import AuthContext from '../../context/auth/authContext'
 import moment from 'moment';
+import { PromiseProvider } from 'mongoose';
 
-const GuadianshipDraft = (prop) => {
+const GuadianshipDraft = (props) => {
 
     const childContext = useContext(ChildContext)
     const guardianContext = useContext(GuardianContext)
@@ -66,9 +67,12 @@ const GuadianshipDraft = (prop) => {
                 </div>
             )
         })
-    
+        const proceed = () => {
+            props.history.push('myforms')
+        }
 
     return (
+        <>
         <div className='draft draft-container'>
             <div className='draft draft-header'>
                 <h3>APPOINTMENT OF GUARDIAN BY {parents.length>1 ? 'PARENTS' : 'PARENT'}</h3>
@@ -91,7 +95,7 @@ const GuadianshipDraft = (prop) => {
                 </p>
                 <br></br>
                 <p>
-                    {limitations === '' ? '' : `The following are limitations on the powers the guardian(s) may otherwise exercise: ${limitations}`}
+                   <span> {limitations === '' ? '' : `The following are limitations on the powers the guardian(s) may otherwise exercise: ${limitations}`}</span>
                 </p>
                 <br></br>
                 <p>
@@ -101,9 +105,9 @@ const GuadianshipDraft = (prop) => {
                 <h3>GUARDIANS</h3>
                 <h4>Primary Guardians</h4>
                 <br></br>
-                {primaryGuardianList}
+                <span> {primaryGuardianList}</span>
                 <h4>Alternative Guardians</h4>
-                {alternativeGuardianList}
+                <span> {alternativeGuardianList}</span>
             </div>
             <div>
             <br></br><br></br>
@@ -125,13 +129,17 @@ const GuadianshipDraft = (prop) => {
 	        Notary Public</p>
             <br></br>
             <br></br>
-            <br></br>
+        
             </div>
         
         
         
         
         </div>
+        <div>
+            <button className='continue guardianship-draft-button' onClick={proceed}>Continue</button>
+        </div>
+        </>
     
     
     

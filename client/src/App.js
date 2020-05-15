@@ -27,6 +27,7 @@ import ParentForm from './components/parents/ParentForm';
 import Limitations from './components/forms/limitations';
 import GuardianForm from './components/guardians/GuardianForm';
 import GuradianDraft from './components/forms/GuardianshipDraft';
+import MyForms from './components/forms/myForms';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
@@ -48,6 +49,7 @@ function App() {
                   <PrivateRoute exact path='/' component={Home} />
                   <PrivateRoute exact path='/account' component={Account} />
                   <PrivateRoute exact path='/forms' component={Forms} />
+                  <PrivateRoute exact path='/myforms' component={MyForms} />
                   <PrivateRoute exact path='/estate' component={Estate} />
                   <PrivateRoute exact path='/schedule' component={Schedule} />
                   <PrivateRoute exact path='/parent' component={ParentForm} />

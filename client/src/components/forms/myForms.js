@@ -1,34 +1,38 @@
 import React, {Fragment, useContext, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
-import GuardianItem from './GuardianItem'
+import FormItem from './formItem'
 import ChildContext from '../../context/child/childContext'
 import Spinner from '../layout/Spinner'
 import GuardianContext from '../../context/guardian/guardianContext'
 
 
-const Guardians = () => {
+const MyForms = (props) => {
     const childContext = useContext(ChildContext);
     const {children, filtered, getChildren} = childContext;
     const guardianContext = useContext(GuardianContext);
-    const {guardians, loading} = guardianContext;
-    
+    const {forms, parents, loading, getForms} = guardianContext;
+  
     useEffect(()=>{
-        // getParents();
+        getForms();
         //eslint-disable-next-line
     }, []);
-
-    if(guardians !== null && guardians.length === 0 && !loading){
-        return <h4 className='please-add'>Please add a guardian</h4>
+    console.log('myForms=forms', forms)
+    if(forms !== null && forms.length === 0 && !loading){
+        return <Link to='/forms/'> <h4 className='please-add-form'>Please create a Form</h4></Link>
     }
-
+    const reroute = () =>{
+        props.history.push('/forms')
+    }
     return(
         <Fragment>
-            {guardians !== null && !loading ? 
+            <button onClick={reroute} className='create-form-button btn btn-dark bt-sm'>Start New Form</button> 
+            {forms !== null && !loading ? 
             (<TransitionGroup>
-                {guardians.map(guardian => (
+                {forms.map(form => (
                     // <h3>{contact.first_name}</h3>
-                    <CSSTransition key={guardian._id} timeout={500} classNames='item'>
-                        <GuardianItem guardian={guardian} />
+                    <CSSTransition key={form._id} timeout={500} classNames='item'>
+                        <FormItem form={form} />
                     </CSSTransition>
                 ))}
             </TransitionGroup>) : <Spinner /> }
@@ -37,4 +41,4 @@ const Guardians = () => {
     )
 }
 
-export default Guardians
+export default MyForms

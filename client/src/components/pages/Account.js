@@ -39,9 +39,9 @@ const Account = (props) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log('frist_name', first_name)
-        updateAccount(account._id, editAccount);
         
+        updateAccount(account._id, editAccount);
+        setEditAccount(email)
     };
 
     const onPasswordChange = e => setEditPassword({...editPassword, [e.target.name]: e.target.value});

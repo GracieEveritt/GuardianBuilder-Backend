@@ -8,9 +8,9 @@ const Estate = () => {
         <>
         <div>
             <h1>Estate</h1>
-            <p className="my-1">
+            {/* <p className="my-1">
                 This is the Estate page.
-            </p>
+            </p> */}
         </div>
             <div className="grid-2">
             <div>

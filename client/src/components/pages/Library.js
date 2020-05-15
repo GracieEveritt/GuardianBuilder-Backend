@@ -6,6 +6,7 @@ const Library = () => {
         <div>
             <h1>Library Page</h1>
         </div>
+        <div className='dict'>
         <div>
             <h4>Guardianship</h4>
             <p>Legal document that appoints a perons to make decisions on behalf of someone else.</p>
@@ -21,6 +22,7 @@ const Library = () => {
         <div>
             <h4>Will</h4>
             <p>Written instrument legally executed by which a person makes disposition of his or her estate to take effect after death.</p>
+        </div>
         </div>
         </>
     )

@@ -14,7 +14,8 @@ import {
     UPDATE_FORM,
     ADD_GUARDIAN,
     GUARDIAN_ERROR,
-    UPDATE_LIMITATIONS
+    UPDATE_LIMITATIONS,
+    GET_FORMS
    
 } from '../types';
 
@@ -31,7 +32,8 @@ const GuardianState = props => {
        guardians: [],
        limitations: null,
        error: null,
-       loading: null
+       loading: null,
+       forms: [],
     };
 
     const [state, dispatch] = useReducer(guardianReducer, initialState);
@@ -115,6 +117,15 @@ const GuardianState = props => {
             dispatch({type: PARENT_ERROR, payload: err.response.msg})
         }
     }
+    const getForms = async () => {
+        try {
+            const res = await axios.get('/api/forms');
+            console.log('getForms', res.data)
+            dispatch({type: GET_FORMS, payload: res.data})
+        } catch (err) {
+            dispatch({type: PARENT_ERROR, payload: err.response.msg})
+        }
+    }
 
     const addGuardian = async (theguardian) => {
        
@@ -156,13 +167,16 @@ const GuardianState = props => {
             guardians: state.guardians,
             limitations: state.limitations,
             error: state.error,
+            forms: state.forms,
             createGuardianForm,
             addParent,
             getParents,
             updateParent,
             addLimitations,
             addGuardian,
-            updateGuardian
+            updateGuardian,
+            getForms
+            
         }}>
             {props.children}
         </GuardianContext.Provider>

@@ -22,7 +22,7 @@ const Sidebar = ({ title, icon}) => {
                 <Link to='/account'>myInfo</Link>
             </li>
             <li>
-                <Link to='/forms'>myForms</Link>
+                <Link to='/myforms'>myForms</Link>
             </li>
             <li>
                 <Link to='/estate'>myEstate</Link>

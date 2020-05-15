@@ -8,7 +8,8 @@ import {
     UPDATE_FORM,
     ADD_GUARDIAN,
     GUARDIAN_ERROR,
-    UPDATE_LIMITATIONS
+    UPDATE_LIMITATIONS,
+    GET_FORMS
 
 } from '../types';
 
@@ -66,6 +67,12 @@ export default (state,action) => {
             return {
                 ...state, 
                 parents: action.payload,
+                loading: false
+            }
+        case GET_FORMS:
+            return {
+                ...state, 
+                forms: action.payload,
                 loading: false
             }
         default: 

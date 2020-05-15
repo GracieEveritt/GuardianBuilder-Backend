@@ -99,6 +99,7 @@ const GuardianForm = (props) => {
             predecease: '',
             divorce : ''          
         })
+        setCouple('no');
     };
 
     const addGuardiansToForm = () => {
@@ -127,22 +128,22 @@ const GuardianForm = (props) => {
                 </div>
             </div>
             <div className='children'>   
-                <div>
+                <div className='add-guardian-container'>
                 <h2 className='text-primary'>Guardians</h2>
                 <div>
                     <h3>Will this {count===1 ? 'first' : 'alternative'} guardian be a couple?</h3>
-                    <form>
+                    <form className='guardians-couple'>
                         <input type='radio' name='couple' value={couple} onClick={()=>setCouple('yes')}/><label>Yes</label>
                         <input type='radio' name='couple' value={couple} onClick={()=>setCouple('no')}/><label>No</label>
                     </form>
                 </div>
-                <form className='form-child' onSubmit={onSubmit}>
-                    <h2 className='text-primary'>Add Guardian</h2>
+                <form className='form-guardian' onSubmit={onSubmit}>
+                    {/* <h2 className='text-primary'>Add Guardian</h2> */}
                     <input type='text' placeholder='First Name' name='first_name' value={first_name} onChange={onChange} />
                     <input type='text' placeholder='Middle Name' name='middle_name' value={middle_name} onChange={onChange} />
                     <input type='text' placeholder='Last Name' name='last_name' value={last_name} onChange={onChange} />
                     <input type='text' placeholder='Suffix' name='suffix' value={suffix} onChange={onChange} />
-                    <div className='form-group'>
+                    <div className='form-group guardians-address'>
                         <label>Address</label>
                         <input type='textarea' placeholder='Street Address' name='street' value={street} onChange={onChange} />
                         <input type='text' placeholder='City' name='city' value={city} onChange={onChange} />
@@ -151,22 +152,22 @@ const GuardianForm = (props) => {
                     </div>
                     <input type='text' placeholder='Relation to You' name='relationToParent' value={relationToParent} onChange={onChange} />                               
                     {couple === 'yes' ? 
-                        <div>
-                            <h3>Add Spouse</h3>
+                        <div className='guardian-add-spouse-form'>
+                            <h3 className='guardian-add-spouse'>Add Spouse</h3>
                             <input type='text' placeholder="Spouse's First Name" name='spouse_first_name' value={spouse_first_name} onChange={onChange} />
                             <input type='text' placeholder="Spouse's Middle Name" name='spouse_middle_name' value={spouse_middle_name} onChange={onChange} />
                             <input type='text' placeholder="Spouse's Last Name" name='spouse_last_name' value={spouse_last_name} onChange={onChange} />
                             <input type='radio' id='predecease' name='predecease' value='true'  onChange={onChange}/>
-                                Select if your guardian predeceases the spouse, do you still want the spouse to remain as guardian? {' '}
+                                Select if do not want the spouse to remain as guardian if this guardian predeceases that spouse.{' '}
                             <br></br>
                             <input type='radio' id='divorce' name='divorce' value='true'  onChange={onChange}/>
-                                Select if this couple divorces, do you still want the now single guardian to remain as guardian? {' '}
+                                Select if you do not want this guardian to remain as guardian if this couple divorces. {' '}
                         </div> : ''}                
                     <div>
-                        <input type="submit" value="Add Guardian" className='btn btn-primary btn-block'/>
+                        <input type="submit" value="Add Guardian" className='guardian-button btn btn-primary btn-block'/>
                     </div>
                     <div>
-                        <button onClick={addGuardiansToForm} className='btn btn-light btn-block' >Continue</button>
+                        <button onClick={addGuardiansToForm} className='guardian-button btn btn-light btn-block' >Continue</button>
                     </div>
                 </form>
                 </div>
